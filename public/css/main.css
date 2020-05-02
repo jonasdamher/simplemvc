@@ -33,7 +33,13 @@ body {
   align-items: center;
 }
 
+.navbar-content {
+  display: flex;
+  align-items: center;
+}
+
 .navbar-menu {
+  margin: 0 1rem;
   list-style: none;
   display: flex;
 }
@@ -49,6 +55,10 @@ body {
 
 .navbar-menu li a:focus,
 .navbar-menu li a:hover {
+  color: #fff;
+}
+
+.navbar-menu .active a {
   color: #fff;
 }
 
@@ -143,4 +153,10 @@ body {
 
 .label {
   padding-right: 1rem;
+}
+
+.logo {
+  width: 100%;
+  max-width: 32px;
+  height: auto;
 }

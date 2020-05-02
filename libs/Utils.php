@@ -13,6 +13,13 @@ class Utils
 		}
 		return $_POST[$postFieldName];
 	}
+
+	public static function menuActive($page){
+		if(isset($_GET['controller']) && $_GET['controller']==$page){
+			return 'active';
+		}
+		return '';
+	}
 }
 
 ?>
