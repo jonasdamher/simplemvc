@@ -1,0 +1,24 @@
+<?php
+
+class UsersController extends BaseController {
+
+    public function __construct()
+    {
+        $this->auth('ROLE_ADMIN');
+        $this->loadModels(['users']);
+    }
+
+    public function profile() {
+        
+        $this->model('users')->setId($_SESSION['userInit']);
+        $user = $this->model('users')->get();
+
+        include $this->view('users','profile');
+    }
+
+    public function logout() {
+        $this->model('users')->logout();
+    }
+}
+
+?>

@@ -1,0 +1,26 @@
+IndexIgnore *
+Options +FollowSymLinks
+Options -Indexes
+ServerSignature Off
+
+<Files .htaccess>
+  Order allow,deny
+  Deny from all
+</Files>
+
+<Files ~ "\.(env|md|gitignore|gitattributes|lock)$">
+  Order allow,deny
+  Deny from all
+</Files>
+
+<IfModule mod_rewrite.c>
+
+  RewriteEngine On
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  RewriteRule ^([a-zA-Z0-9-]+)/([a-zA-Z0-9-]+)$ index.php?controller=$1&action=$2 [QSA,L]
+  RewriteRule ^([a-zA-Z0-9-]+)$ index.php?controller=$1 [QSA,L]
+
+</IfModule>
