@@ -10,7 +10,6 @@ class Router
     {
         $this->controller = strtolower(trim($_GET['controller'] ?? CONTROLLER_DEFAULT));
         $this->action = strtolower(trim($_GET['action'] ?? ACTION_DEFAULT));
-
         $this->controller();
     }
 
@@ -25,7 +24,6 @@ class Router
         if (!class_exists($className)) {
             header('Location:' . URL_BASE . 'error/error404');
         }
-
         $controller = new $className();
         $this->action($controller);
     }
@@ -37,7 +35,6 @@ class Router
         if (!method_exists($controller, $actionName)) {
             header('Location:' . URL_BASE . 'error/error404');
         }
-
         return $controller->$actionName();
     }
 }

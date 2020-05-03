@@ -17,7 +17,7 @@ class BaseModel
 
 	protected function fail($message)
 	{
-		return ['success' => false, 'message' => $message,];
+		return ['success' => false, 'message' => $message];
 	}
 
 	protected function find()
@@ -26,10 +26,17 @@ class BaseModel
 			$sql = "SELECT * FROM $this->table";
 			$consult = Database::connect()->prepare($sql);
 			$consult->execute();
-			$result = $consult->fetchAll(PDO::FETCH_ASSOC);
 
-			$consult = null;
 			Database::disconnect();
+
+			if ($consult->rowCount() == 0) {
+				$consult = null;
+				return $this->fail("Don't exist ");
+			}
+
+			$result = $consult->fetchAll(PDO::FETCH_ASSOC);
+			$consult = null;
+
 			return $this->success($result);
 		} catch (PDOException $e) {
 			return $this->fail($e->getMessage());
@@ -43,10 +50,16 @@ class BaseModel
 			$consult = Database::connect()->prepare($sql);
 			$consult->bindValue(':id', $id, PDO::PARAM_STR);
 			$consult->execute();
-			$result = $consult->fetch(PDO::FETCH_ASSOC);
 
-			$consult = null;
 			Database::disconnect();
+
+			if ($consult->rowCount() == 0) {
+				$consult = null;
+				return $this->fail('Not found');
+			}
+
+			$result = $consult->fetch(PDO::FETCH_ASSOC);
+			$consult = null;
 
 			return $this->success($result);
 		} catch (PDOException $e) {

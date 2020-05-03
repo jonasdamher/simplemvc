@@ -1,8 +1,8 @@
 <div class="container">
-	<div class="row">
+	<div class="row j-center">
 		<h1 class="h1">Login</h1>
 	</div>
-	<div class="row">
+	<div class="row f-column items-center">
 		<div class="card bg-light shadow-md">
 			<div class="card-body">
 				<form class="form" action="<?= URL_BASE ?>login" method="post">
@@ -18,5 +18,6 @@
 				</form>
 			</div>
 		</div>
+		<p class="text-danger p"><?= $this->getResponseModel() ?></p>
 	</div>
 </div>

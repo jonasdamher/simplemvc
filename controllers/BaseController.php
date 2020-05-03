@@ -4,7 +4,16 @@ class BaseController
 {
 
 	protected $currentView = [];
+	private $responseModel;
 	private $models = [];
+
+	protected function setResponseModel($res){
+		$this->responseModel = $res;
+	}
+
+	public function getResponseModel(){
+		return $this->responseModel;
+	}
 
 	protected function loadModels($modelsName)
 	{

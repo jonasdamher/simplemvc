@@ -11,6 +11,10 @@ class ArticlesController extends BaseController {
 
         $articles = $this->model('articles')->getAll();
 
+        if(!$articles['success']){
+            $this->setResponseModel($articles['message'].'articles');
+        }
+
         include $this->view('articles');
     }
 
