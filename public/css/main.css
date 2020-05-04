@@ -43,13 +43,16 @@ body {
   margin: 0 1rem;
   list-style: none;
   display: flex;
+  align-items: center;
 }
 
 .navbar-menu li {
-  padding: 0.5rem;
+  margin: 0 0.5rem;
+  position: relative;
 }
 
-.navbar-menu li a {
+.navbar-menu li a,
+.navbar-menu li .btn-dropdown {
   text-decoration: none;
   color: rgb(209, 209, 209);
 }
@@ -76,12 +79,50 @@ body {
   justify-content: center;
 }
 
+.dropdown {
+  display: none;
+  position: absolute;
+  left: 58px;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid rgba(34, 34, 34, 0.096);
+}
+
+.dropdown .dropdown-body {
+  width: max-content;
+  padding: 0.5rem;
+  list-style: none;
+}
+
+.dropdown .dropdown-body li {
+  padding: 0.5rem;
+}
+
+.dropdown .dropdown-body li a {
+  text-decoration: none;
+  color: #222;
+}
+
+.dropdown .dropdown-body li a:hover,
+.dropdown .dropdown-body li a:focus {
+  color: rgb(65, 65, 65);
+}
+
+.btn-dropdown::after {
+  content: "▼";
+}
+
+.navbar-menu li .btn-dropdown.active {
+  color: #fff;
+}
+
 .btn {
   padding: 0.6rem 0.8rem;
   border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
-  color: #fff;
+  border: 0;
+  background-color: transparent;
 }
 
 .btn-orange {
@@ -185,4 +226,8 @@ body {
 
 .text-danger {
   color: red;
+}
+
+.text-light {
+  color: #fff;
 }
