@@ -7,11 +7,20 @@
 				</a>
 				<ul class="navbar-menu">
 					<li class="<?= Utils::menuActive('users') ?>"><a href="<?= URL_BASE ?>users/profile">Profile</a></li>
-					<li class="<?= Utils::menuActive('articles') ?>"><a href="<?= URL_BASE ?>articles/create">Create article</a></li>
+					<li class="<?= Utils::menuActive('articles') ?>">
+						<a href="<?= URL_BASE ?>articles">Articles</a>
+						<button type="button" class="btn btn-dropdown"></button>
+						<div class="dropdown shadow-md">
+							<ul class="dropdown-body">
+								<li><a href="<?= URL_BASE ?>articles/create">Create article</a></li>
+								<li><a href="<?= URL_BASE ?>categories/create">Create category</a></li>
+							</ul>
+						</div>
+					</li>
 					<li class="<?= Utils::menuActive('mycv') ?>"><a href="<?= URL_BASE ?>mycv">MyCV</a></li>
 				</ul>
 			</div>
-			<a class="btn text-shadow-sm" href="<?= URL_BASE ?>/users/logout">Logout</a>
+			<a class="btn text-light text-shadow-sm" href="<?= URL_BASE ?>/users/logout">Logout</a>
 		</div>
 	</nav>
 </header>

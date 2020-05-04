@@ -7,16 +7,36 @@
 			<div class="card-body">
 				<form class="form" action="<?= URL_BASE ?>articles/create" method="post">
 					<div class="form-input">
-						<label class="label" for="name">name</label>
-						<input type="text" name="name" id="name" class="input" required />
+						<label class="label" for="title">title</label>
+						<input type="text" name="title" id="title" class="input" required />
 					</div>
 					<div class="form-input">
-						<label class="label" for="price">price</label>
-						<input type="text" name="price" id="price" class="input" value="00.00" pattern="[0-9]{2,}+[.]+[0-9]{2,}" />
+						<label class="label" for="description">description</label>
+						<input type="text" name="description" id="description" class="input" />
 					</div>
+					<div class="form-input">
+						<textarea name="editor" id="editor" rows="10" col="80">
+						</textarea>
+					</div>
+					<div class="form-input">
+						<label class="label" for="idCategory">Category</label>
+						<select name="idCategory" id="idCategory" class="input">
+							<option value="0">-Select category-</option>
+							<?php
+							if ($categories['success']) {
+								foreach ($categories['result'] as $category) { ?>
+									<option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+							<?php }
+							} ?>
+						</select>
+					</div>
+
 					<button type="submit" class="btn btn-orange shadow-sm">Create</button>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+	CKEDITOR.replace('editor');
+</script>

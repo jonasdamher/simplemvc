@@ -3,6 +3,8 @@
 	<p>simplymvcphp created by jonasdamher.</p>
 	</div>
 </footer>
+<!-- SCRIPT -->
+<script src="<?= URL_BASE ?>/public/js/main.js" defer></script>
 </body>
 
 </html>
