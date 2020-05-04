@@ -127,3 +127,4 @@ class UsersModel extends BaseModel
 		return $this->findById($this->getId());
 	}
 }
+?>
