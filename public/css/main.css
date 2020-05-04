@@ -152,7 +152,7 @@ body {
 }
 
 .row .card:last-child {
-  margin-right: 0rem;
+  margin-right: 0;
 }
 
 .card-body {
@@ -191,6 +191,8 @@ body {
 }
 
 .form {
+  width: 100%;
+  max-width: 920px;
   display: flex;
   flex-direction: column;
 }

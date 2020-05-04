@@ -2,7 +2,7 @@
 	<div class="row j-center">
 		<h1 class="h1">Category</h1>
 	</div>
-	<div class="row f-column items-center">
+	<div class="row j-center">
 		<div class="card bg-light shadow-md">
 			<div class="card-body">
 				<form class="form" action="<?= URL_BASE ?>categories/create" method="post">
@@ -14,6 +14,8 @@
 				</form>
 			</div>
 		</div>
+	</div>
+	<div class="row j-center">
 		<p class="text-danger p"><?= $this->getResponseModel() ?></p>
 	</div>
 </div>
