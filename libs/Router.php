@@ -8,8 +8,8 @@ class Router
 
     public function __construct()
     {
-        $this->controller = strtolower(trim($_GET['controller'] ?? CONTROLLER_DEFAULT));
-        $this->action = strtolower(trim($_GET['action'] ?? ACTION_DEFAULT));
+        $this->controller = strtolower(trim($_GET['controller'] ?? 'home'));
+        $this->action = strtolower(trim($_GET['action'] ?? 'index'));
         $this->controller();
     }
 
