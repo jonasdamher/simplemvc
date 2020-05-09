@@ -100,9 +100,8 @@ class ArticlesModel extends BaseModel
 	public function create()
 	{
 		try {
-			$consult = Database::connect()->prepare("INSERT INTO $this->table 
-			(title, description, main, idUser, idCategory, urlName) 
-			VALUE (:title, :description, :main, :idUser, :idCategory, :urlName)");
+
+			$consult = Database::connect()->prepare("INSERT INTO $this->table (title, description, main, idUser, idCategory, urlName) VALUES (:title, :description, :main, :idUser, :idCategory, :urlName)");
 
 			$consult->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
 			$consult->bindValue(':description', $this->getDescription(), PDO::PARAM_STR);
@@ -110,17 +109,21 @@ class ArticlesModel extends BaseModel
 			$consult->bindValue(':idUser', $this->getIdUser(), PDO::PARAM_INT);
 			$consult->bindValue(':idCategory', $this->getIdCategory(), PDO::PARAM_INT);
 			$consult->bindValue(':urlName', $this->getUrlName(), PDO::PARAM_STR);
+
 			$consult->execute();
+
 			$result = ['lastId' => Database::connect()->lastInsertId()];
+
+			$this->success($result);
+		} catch (PDOException $e) {
+
+			$this->fail($e->getMessage());
+		} finally {
 
 			$consult = null;
 			Database::disconnect();
-
-			return $this->success($result);
-		} catch (PDOException $e) {
-			return $this->fail($e->getMessage());
+			return $this->response();
 		}
 	}
-
 }
 ?>

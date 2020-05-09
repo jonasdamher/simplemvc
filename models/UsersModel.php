@@ -73,9 +73,11 @@ class UsersModel extends BaseModel
 		try {
 
 			$consult = Database::connect()->prepare("INSERT INTO $this->table (name, email, password) VALUES (:name, :email, :password)");
+
 			$consult->bindValue(':name', $this->getName(), PDO::PARAM_STR);
 			$consult->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
 			$consult->bindValue(':password', $this->criptoPassword(), PDO::PARAM_STR);
+
 			$consult->execute();
 
 			$result = ['lastId' => Database::connect()->lastInsertId()];
@@ -97,7 +99,9 @@ class UsersModel extends BaseModel
 		try {
 
 			$consult = Database::connect()->prepare("SELECT * FROM $this->table WHERE email=:email");
+
 			$consult->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
+
 			$consult->execute();
 
 			if ($consult->rowCount() == 0) {
@@ -139,3 +143,4 @@ class UsersModel extends BaseModel
 		return $this->findById($this->getId());
 	}
 }
+?>

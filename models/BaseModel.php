@@ -30,6 +30,7 @@ class BaseModel
 	protected function find()
 	{
 		try {
+	
 			$consult = Database::connect()->prepare("SELECT * FROM $this->table ORDER BY id DESC");
 			$consult->execute();
 
@@ -57,8 +58,11 @@ class BaseModel
 	protected function findById($id)
 	{
 		try {
+	
 			$consult = Database::connect()->prepare("SELECT * FROM $this->table WHERE id=:id");
+	
 			$consult->bindValue(':id', $id, PDO::PARAM_STR);
+	
 			$consult->execute();
 
 			if ($consult->rowCount() == 0) {
@@ -85,8 +89,11 @@ class BaseModel
 	protected function deleteById($id)
 	{
 		try {
+	
 			$consult = Database::connect()->prepare("DELETE FROM $this->table WHERE id = :id");
+	
 			$consult->bindValue(':id', $id, PDO::PARAM_INT);
+	
 			$consult->execute();
 
 			$this->success(null, 'Deleted');

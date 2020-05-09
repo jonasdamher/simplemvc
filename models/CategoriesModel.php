@@ -45,8 +45,11 @@ class CategoriesModel extends BaseModel
 	public function create()
 	{
 		try {
-			$consult = Database::connect()->prepare("INSERT INTO $this->table (name) VALUE (:name)");
+
+			$consult = Database::connect()->prepare("INSERT INTO $this->table (name) VALUES (:name)");
+
 			$consult->bindValue(':name', $this->getName(), PDO::PARAM_STR);
+
 			$consult->execute();
 
 			$result = ['lastId' => Database::connect()->lastInsertId()];
@@ -68,3 +71,4 @@ class CategoriesModel extends BaseModel
 		return $this->deleteById($this->getId());
 	}
 }
+?>

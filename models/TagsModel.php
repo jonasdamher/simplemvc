@@ -46,17 +46,22 @@ class TagsModel extends BaseModel
 	public function create()
 	{
 		try {
-			$consult = Database::connect()->prepare("INSERT INTO $this->table (idArticle, name) VALUE (:idArticle, :name)");
+
+			$consult = Database::connect()->prepare("INSERT INTO $this->table (idArticle, name) VALUES (:idArticle, :name)");
+
 			$consult->bindValue(':idArticle', $this->getIdArticle(), PDO::PARAM_INT);
 			$consult->bindValue(':name', $this->getName(), PDO::PARAM_STR);
+
 			$consult->execute();
 
 			$result = ['lastId' => Database::connect()->lastInsertId()];
 
 			$this->success($result);
 		} catch (PDOException $e) {
+
 			$this->fail($e->getMessage());
-		}finally {
+		} finally {
+
 			$consult = null;
 			Database::disconnect();
 			return $this->response();
