@@ -53,12 +53,13 @@ class TagsModel extends BaseModel
 
 			$result = ['lastId' => Database::connect()->lastInsertId()];
 
+			$this->success($result);
+		} catch (PDOException $e) {
+			$this->fail($e->getMessage());
+		}finally {
 			$consult = null;
 			Database::disconnect();
-
-			return $this->success($result);
-		} catch (PDOException $e) {
-			return $this->fail($e->getMessage());
+			return $this->response();
 		}
 	}
 }

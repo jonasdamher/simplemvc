@@ -5,6 +5,8 @@ class BaseModel
 
 	protected $table;
 
+	private $response;
+
 	public function __construct($table)
 	{
 		$this->table = $table;
@@ -12,58 +14,90 @@ class BaseModel
 
 	protected function success($result, $message = 'Success')
 	{
-		return ['success' => true, 'message' => $message, 'result' => $result];
+		$this->response = ['success' => true, 'message' => $message, 'result' => $result];
 	}
 
 	protected function fail($message)
 	{
-		return ['success' => false, 'message' => $message];
+		$this->response = ['success' => false, 'message' => $message];
+	}
+
+	protected function response()
+	{
+		return $this->response;
 	}
 
 	protected function find()
 	{
 		try {
-			$sql = "SELECT * FROM $this->table";
-			$consult = Database::connect()->prepare($sql);
+			$consult = Database::connect()->prepare("SELECT * FROM $this->table ORDER BY id DESC");
 			$consult->execute();
 
-			Database::disconnect();
-
 			if ($consult->rowCount() == 0) {
-				$consult = null;
-				return $this->fail("Don't exist ");
+				throw new Exception("Don't exist ");
 			}
 
 			$result = $consult->fetchAll(PDO::FETCH_ASSOC);
-			$consult = null;
 
-			return $this->success($result);
+			$this->success($result);
+		} catch (Exception $e) {
+
+			$this->fail($e->getMessage());
 		} catch (PDOException $e) {
-			return $this->fail($e->getMessage());
+
+			$this->fail($e->getMessage());
+		} finally {
+
+			$consult = null;
+			Database::disconnect();
+			return $this->response();
 		}
 	}
 
 	protected function findById($id)
 	{
 		try {
-			$sql = "SELECT * FROM $this->table WHERE id=:id";
-			$consult = Database::connect()->prepare($sql);
+			$consult = Database::connect()->prepare("SELECT * FROM $this->table WHERE id=:id");
 			$consult->bindValue(':id', $id, PDO::PARAM_STR);
 			$consult->execute();
 
-			Database::disconnect();
-
 			if ($consult->rowCount() == 0) {
-				$consult = null;
-				return $this->fail('Not found');
+				throw new Exception('Not found');
 			}
 
 			$result = $consult->fetch(PDO::FETCH_ASSOC);
-			$consult = null;
 
-			return $this->success($result);
+			$this->success($result);
+		} catch (Exception $e) {
+
+			$this->fail($e->getMessage());
 		} catch (PDOException $e) {
-			return $this->fail($e->getMessage());
+
+			$this->fail($e->getMessage());
+		} finally {
+
+			$consult = null;
+			Database::disconnect();
+			return $this->response();
+		}
+	}
+
+	protected function deleteById($id)
+	{
+		try {
+			$consult = Database::connect()->prepare("DELETE FROM $this->table WHERE id = :id");
+			$consult->bindValue(':id', $id, PDO::PARAM_INT);
+			$consult->execute();
+
+			$this->success(null, 'Deleted');
+		} catch (PDOException $e) {
+
+			$this->fail($e->getMessage());
+		} finally {
+
+			$consult = null;
+			Database::disconnect();
+			return $this->response();
 		}
 	}
 }

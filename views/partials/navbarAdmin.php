@@ -13,7 +13,7 @@
 						<div class="dropdown shadow-md">
 							<ul class="dropdown-body">
 								<li><a href="<?= URL_BASE ?>articles/create">Create article</a></li>
-								<li><a href="<?= URL_BASE ?>categories/create">Create category</a></li>
+								<li><a href="<?= URL_BASE ?>categories">Categories</a></li>
 							</ul>
 						</div>
 					</li>

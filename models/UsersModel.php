@@ -28,6 +28,7 @@ class UsersModel extends BaseModel
 	{
 		$this->name = $name;
 	}
+
 	public function getName()
 	{
 		return $this->name;
@@ -37,6 +38,7 @@ class UsersModel extends BaseModel
 	{
 		$this->email = $email;
 	}
+
 	public function getEmail()
 	{
 		return $this->email;
@@ -46,6 +48,7 @@ class UsersModel extends BaseModel
 	{
 		$this->password = $password;
 	}
+
 	public function getPassword()
 	{
 		return $this->password;
@@ -77,12 +80,15 @@ class UsersModel extends BaseModel
 
 			$result = ['lastId' => Database::connect()->lastInsertId()];
 
-			$result = null;
-			Database::disconnect();
-
-			return $this->success($result);
+			$this->success($result);
 		} catch (PDOException $e) {
-			return $this->fail($e->getMessage());
+
+			$this->fail($e->getMessage());
+		} finally {
+
+			$consult = null;
+			Database::disconnect();
+			return $this->response();
 		}
 	}
 
@@ -94,22 +100,28 @@ class UsersModel extends BaseModel
 			$consult->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
 			$consult->execute();
 
-			Database::disconnect();
-
 			if ($consult->rowCount() == 0) {
-				return $this->fail('password or email does not match');
+				throw new Exception('password or email does not match');
 			}
 
 			$result = $consult->fetch(PDO::FETCH_ASSOC);
-			$consult = null;
 
 			if (!password_verify($this->getPassword(), $result['password'])) {
-				return $this->fail('password or email does not match');
+				throw new Exception('password or email does not match');
 			}
 
 			$this->sessionInit($result);
+		} catch (Exception $e) {
+
+			$this->fail($e->getMessage());
 		} catch (PDOException $e) {
-			return $this->fail($e->getMessage());
+
+			$this->fail($e->getMessage());
+		} finally {
+
+			$consult = null;
+			Database::disconnect();
+			return $this->response();
 		}
 	}
 
@@ -127,4 +139,3 @@ class UsersModel extends BaseModel
 		return $this->findById($this->getId());
 	}
 }
-?>

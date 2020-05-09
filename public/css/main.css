@@ -226,10 +226,61 @@ body {
   justify-content: center;
 }
 
+.text-bold {
+  font-weight: bold;
+}
+
+.text-secondary {
+  color: gray;
+}
+
 .text-danger {
   color: red;
 }
 
 .text-light {
   color: #fff;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #2222224d;
+  z-index: 1;
+}
+
+.modal .modal-content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal .modal-content .modal-card {
+  min-width: 320px;
+  border-radius: 4px;
+  border: 1px solid rgba(34, 34, 34, 0.096);
+}
+
+.modal .modal-content .modal-card .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal .modal-content .modal-card .modal-body,
+.modal .modal-content .modal-card .modal-header {
+  padding: 1rem;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+.table {
+  width: 100%;
 }

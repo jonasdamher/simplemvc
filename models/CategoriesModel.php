@@ -32,6 +32,11 @@ class CategoriesModel extends BaseModel
 		return $this->name;
 	}
 
+	public function get()
+	{
+		return $this->findById($this->getId());
+	}
+
 	public function getAll()
 	{
 		return $this->find();
@@ -46,13 +51,20 @@ class CategoriesModel extends BaseModel
 
 			$result = ['lastId' => Database::connect()->lastInsertId()];
 
+			$this->success($result);
+		} catch (PDOException $e) {
+
+			$this->fail($e->getMessage());
+		} finally {
+
 			$consult = null;
 			Database::disconnect();
-
-			return $this->success($result);
-		} catch (PDOException $e) {
-			return $this->fail($e->getMessage());
+			return $this->response();
 		}
 	}
+
+	public function delete()
+	{
+		return $this->deleteById($this->getId());
+	}
 }
-?>
