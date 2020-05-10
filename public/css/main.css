@@ -284,3 +284,11 @@ body {
 .table {
   width: 100%;
 }
+
+.separator {
+  padding: 0 0.8rem;
+}
+
+.separator-left{
+  padding-left: 0.8rem;
+}

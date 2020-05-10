@@ -20,7 +20,11 @@
 					<li class="<?= Utils::menuActive('mycv') ?>"><a href="<?= URL_BASE ?>mycv">MyCV</a></li>
 				</ul>
 			</div>
-			<a class="btn text-light text-shadow-sm" href="<?= URL_BASE ?>/users/logout">Logout</a>
+			<div class="navbar-content">
+				<div class="text-light text-shadow-sm"><?= $_SESSION['userName'] ?></div>
+				<span class="text-secondary separator-left">|</span>
+				<a class="btn text-light text-shadow-sm" href="<?= URL_BASE ?>/users/logout">Logout</a>
+			</div>
 		</div>
 	</nav>
 </header>
