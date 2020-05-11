@@ -1,9 +1,4 @@
 $(function () {
-  $(".btn-dropdown").on("click", function () {
-    $(this).siblings(".dropdown").toggle();
-    $(this).toggleClass("active");
-  });
-
   function ajax(action, formData = null) {
     return $.ajax({
       method: formData == null ? "POST" : "GET",
@@ -15,14 +10,14 @@ $(function () {
   }
 
   function showModalData(action, typeModal) {
-    var modal = 'modal'+typeModal;
+    var modal = "modal" + typeModal;
     ajax(action).done(res => {
-      modal(JSON.parse(res))
-    }); 
+      modal(JSON.parse(res));
+    });
   }
 
-  function modalShowDelete(data){
-    console.log(data)
+  function modalShowDelete(data) {
+    console.log(data);
   }
 
   $(".btn-modal-delete").on("click", function () {
