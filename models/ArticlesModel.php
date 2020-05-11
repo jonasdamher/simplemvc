@@ -79,6 +79,8 @@ class ArticlesModel extends BaseModel
 
 	public function setUrlName($urlName)
 	{
+		$urlName = preg_replace("/[^a-z0-9áéíóúñ\s]/", '', mb_strtolower(trim($urlName)));
+		$urlName = preg_replace("/\s/", '-', $urlName);
 		$this->urlName = $urlName;
 	}
 
@@ -87,14 +89,14 @@ class ArticlesModel extends BaseModel
 		return $this->urlName;
 	}
 
-	public function getAll()
-	{
-		return $this->find();
-	}
-
 	public function get()
 	{
 		return $this->findById($this->getId());
+	}
+
+	public function getAll()
+	{
+		return $this->find();
 	}
 
 	public function create()

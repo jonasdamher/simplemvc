@@ -54,18 +54,9 @@ class UsersModel extends BaseModel
 		return $this->password;
 	}
 
-	private function sessionInit($userData)
+	public function get()
 	{
-		$_SESSION['userInit'] = $userData['id'];
-		$_SESSION['userName'] = $userData['name'];
-		$_SESSION['userRol'] = $userData['idRol'];
-
-		Utils::redirection('users/profile');
-	}
-
-	private function criptoPassword()
-	{
-		return password_hash($this->getPassword(), PASSWORD_DEFAULT);
+		return $this->findById($this->getId());
 	}
 
 	public function signup()
@@ -98,7 +89,12 @@ class UsersModel extends BaseModel
 	{
 		try {
 
-			$consult = Database::connect()->prepare("SELECT * FROM $this->table WHERE email=:email");
+			$consult = Database::connect()->prepare("SELECT 
+			$this->table.id, $this->table.name, $this->table.email, $this->table.password, $this->table.idRol, 
+			usr_rol.rol, usr_rol.indentity
+			FROM $this->table 
+			INNER JOIN usr_rol ON $this->table.idRol = usr_rol.id
+			WHERE email = :email");
 
 			$consult->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
 
@@ -138,9 +134,20 @@ class UsersModel extends BaseModel
 		Utils::redirection('home');
 	}
 
-	public function get()
+	private function sessionInit($userData)
 	{
-		return $this->findById($this->getId());
+		$_SESSION['userInit'] = $userData['id'];
+		$_SESSION['userName'] = $userData['name'];
+		$_SESSION['userRolName'] = $userData['rol'];
+		$_SESSION['userIdRol'] = $userData['idRol'];
+		$_SESSION['userRolIdentity'] = $userData['indentity'];
+
+		Utils::redirection('users/profile');
+	}
+
+	private function criptoPassword()
+	{
+		return password_hash($this->getPassword(), PASSWORD_DEFAULT);
 	}
 }
 ?>

@@ -67,5 +67,6 @@ class TagsModel extends BaseModel
 			return $this->response();
 		}
 	}
+	
 }
 ?>
