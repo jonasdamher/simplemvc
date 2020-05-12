@@ -91,17 +91,17 @@ class ArticlesModel extends BaseModel
 		return $this->urlName;
 	}
 
-	public function get()
+	public function get(): array
 	{
 		return $this->findById($this->getId());
 	}
 
-	public function getAll()
+	public function getAll(): array
 	{
 		return $this->find();
 	}
 
-	public function create()
+	public function create(): array
 	{
 		try {
 

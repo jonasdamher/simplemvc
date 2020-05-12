@@ -15,7 +15,7 @@ class Database
 
     private static $connection = null;
 
-    private static function connectionTo()
+    private static function connectionTo(): object
     {
         try {
 
@@ -29,7 +29,7 @@ class Database
         }
     }
 
-    public static function connect()
+    public static function connect(): object
     {
         if (self::$connection == null) {
             self::$connection = self::connectionTo();

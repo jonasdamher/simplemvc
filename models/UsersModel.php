@@ -56,12 +56,12 @@ class UsersModel extends BaseModel
 		return $this->password;
 	}
 
-	public function get()
+	public function get(): array
 	{
 		return $this->findById($this->getId());
 	}
 
-	public function signup()
+	public function signup(): array
 	{
 		try {
 
@@ -87,7 +87,7 @@ class UsersModel extends BaseModel
 		}
 	}
 
-	public function login()
+	public function login(): array
 	{
 		try {
 
@@ -147,7 +147,7 @@ class UsersModel extends BaseModel
 		Utils::redirection('users/profile');
 	}
 
-	private function criptoPassword()
+	private function criptoPassword(): string
 	{
 		return password_hash($this->getPassword(), PASSWORD_DEFAULT);
 	}

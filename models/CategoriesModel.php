@@ -34,17 +34,17 @@ class CategoriesModel extends BaseModel
 		return $this->name;
 	}
 
-	public function get()
+	public function get(): array
 	{
 		return $this->findById($this->getId());
 	}
 
-	public function getAll()
+	public function getAll(): array
 	{
 		return $this->find();
 	}
 
-	public function create()
+	public function create(): array
 	{
 		try {
 
@@ -68,7 +68,7 @@ class CategoriesModel extends BaseModel
 		}
 	}
 
-	public function delete()
+	public function delete(): array
 	{
 		return $this->deleteById($this->getId());
 	}

@@ -45,7 +45,7 @@ class TagsModel extends BaseModel
 		return $this->name;
 	}
 
-	public function create()
+	public function create():array
 	{
 		try {
 
