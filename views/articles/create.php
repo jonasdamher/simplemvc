@@ -3,15 +3,15 @@
 		<h1 class="h1">Article</h1>
 	</div>
 	<div class="row j-center">
-		<div class="card bg-light shadow-md">
+		<div class="card card-form bg-light shadow-md">
 			<div class="card-body">
 				<form class="form" action="<?= URL_BASE ?>articles/create" method="post">
 					<div class="form-input">
-						<label class="label" for="title">title</label>
+						<label class="label" for="title">Title</label>
 						<input type="text" name="title" id="title" class="input" required />
 					</div>
 					<div class="form-input">
-						<label class="label" for="description">description</label>
+						<label class="label" for="description">Description</label>
 						<input type="text" name="description" id="description" class="input" />
 					</div>
 					<div class="form-input">

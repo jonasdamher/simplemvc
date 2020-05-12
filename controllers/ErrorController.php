@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 class ErrorController extends BaseController {
 
     public function error404() {

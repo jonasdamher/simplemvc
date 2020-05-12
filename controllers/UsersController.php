@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 class UsersController extends BaseController {
 
     public function __construct()

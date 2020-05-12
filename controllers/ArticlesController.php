@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 class ArticlesController extends BaseController {
 
     public function __construct()

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 function controllersAutoload($controllerName) {
     require_once 'controllers/'.$controllerName.'.php';
 }

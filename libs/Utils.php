@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 class Utils
 {
-	public static function redirection($to)
+	public static function redirection(string $to)
 	{
 		header('Location: ' . URL_BASE . $to);
 	}
 
-	public static function postValue($postFieldName)
+	public static function postValue(string $postFieldName): string
 	{
 		if (!isset($_POST[$postFieldName])) {
 			return '';
@@ -15,7 +17,7 @@ class Utils
 		return $_POST[$postFieldName];
 	}
 
-	public static function menuActive($page)
+	public static function menuActive(string $page): string
 	{
 		if ($_GET['controller'] != $page) {
 			return '';
@@ -23,5 +25,3 @@ class Utils
 		return 'active';
 	}
 }
-
-?>

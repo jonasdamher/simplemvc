@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 class Router
 {
 
@@ -18,24 +20,23 @@ class Router
         $className = $this->controller . 'Controller';
 
         if (!file_exists('controllers/' . $className . '.php')) {
-            header('Location:' . URL_BASE . 'error/error500');
+            Utils::redirection('error/error500');
         }
 
         if (!class_exists($className)) {
-            header('Location:' . URL_BASE . 'error/error404');
+            Utils::redirection('error/error404');
         }
         $controller = new $className();
         $this->action($controller);
     }
 
-    private function action($controller)
+    private function action(object $controller)
     {
         $actionName = $this->action;
 
         if (!method_exists($controller, $actionName)) {
-            header('Location:' . URL_BASE . 'error/error404');
+            Utils::redirection('error/error404');
         }
         return $controller->$actionName();
     }
 }
-?>
