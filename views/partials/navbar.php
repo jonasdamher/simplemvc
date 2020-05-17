@@ -1,5 +1,5 @@
 <header>
-	<nav class="navbar shadow-sm">
+	<nav class="navbar">
 		<div class="navbar-body">
 			<div class="navbar-content">
 				<a href="<?= URL_BASE ?>home">

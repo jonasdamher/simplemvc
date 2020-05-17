@@ -45,6 +45,8 @@ class BaseController
 		$this->currentView['section'] = $controller;
 		$this->currentView['view'] = $action;
 
+		Head::setTitle($action == 'index' ? $controller : $action);
+
 		return 'views/index.php';
 	}
 
