@@ -19,7 +19,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="row j-center">
-		<p class="text-danger p"><?= $this->getResponseModel() ?></p>
-	</div>
+	<?php include 'views/components/snackbar.php'; ?>
 </div>

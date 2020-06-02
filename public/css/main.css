@@ -77,7 +77,6 @@ body {
   position: absolute;
   left: 58px;
   background-color: #fff;
-  border-radius: 4px;
   border: 1px solid rgba(34, 34, 34, 0.096);
 }
 
@@ -111,7 +110,6 @@ body {
 
 .btn {
   padding: 0.6rem 0.8rem;
-  border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
   border: 0;
@@ -147,7 +145,6 @@ body {
 
 .card {
   border: 1px solid rgba(34, 34, 34, 0.096);
-  border-radius: 4px;
 }
 
 .card-form {
@@ -183,7 +180,6 @@ body {
 
 .input {
   padding: 0.6rem;
-  border-radius: 4px;
   border: 1px solid rgba(34, 34, 34, 0.096);
 }
 
@@ -271,7 +267,6 @@ body {
 
 .modal .modal-content .modal-card {
   min-width: 320px;
-  border-radius: 4px;
   border: 1px solid rgba(34, 34, 34, 0.096);
 }
 
@@ -308,10 +303,6 @@ body {
   padding-left: 0.8rem;
 }
 
-.m-0 {
-  margin: 0;
-}
-
 .d-flex{
   display: flex;
 }
@@ -328,10 +319,32 @@ body {
   padding-bottom: 1rem;
 }
 
+.m-0 {
+  margin: 0;
+}
+
+.ml-2 {
+  margin-left: 2rem;
+}
+
 .mb-1 {
   margin-bottom: 1rem;
 }
 
 .border-bottom {
-  border-bottom: 1px solid rgba(34, 34, 34, 0.096);
+  border-bottom: 1px solid #22222218;
+}
+
+.snackbar{
+  background: #222;
+  color: white;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+.snackbar-body{
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
 }
