@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-class HomeController extends BaseController {
+class HomeController extends BaseController
+{
 
     public function __construct()
     {
@@ -10,10 +11,8 @@ class HomeController extends BaseController {
         $this->loadModels(['articles']);
     }
 
-    public function index() {
+    public function index()
+    {
         include $this->view('home');
     }
-
 }
-
-?>

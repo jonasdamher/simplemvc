@@ -73,4 +73,3 @@ class CategoriesModel extends BaseModel
 		return $this->deleteById($this->getId());
 	}
 }
-?>

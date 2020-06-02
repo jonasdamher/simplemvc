@@ -29,4 +29,3 @@ class LoginController extends BaseController
         include $this->view('users', 'login');
     }
 }
-?>

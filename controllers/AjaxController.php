@@ -69,3 +69,4 @@ class AjaxController extends BaseController
         $this->responseJson($this->model('categories')->delete());
     }
 }
+?>

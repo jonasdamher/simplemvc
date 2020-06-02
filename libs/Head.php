@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 class Head
 {
-	private static string $title= '';
+	private static string $title = '';
 	private static string $description = 'Example page, using PHP with MVC architecture';
 
 	public static function setTitle(string $title)
@@ -27,4 +27,3 @@ class Head
 		return self::$description;
 	}
 }
-?>

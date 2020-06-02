@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 	'driver' => 'mysql',
 	'dns' => 'localhost',
@@ -9,5 +11,3 @@ return [
 	'userName' => 'root',
 	'password' => ''
 ];
-
-?>

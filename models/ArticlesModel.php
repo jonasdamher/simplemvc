@@ -130,4 +130,3 @@ class ArticlesModel extends BaseModel
 		}
 	}
 }
-?>

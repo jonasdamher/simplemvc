@@ -31,4 +31,3 @@ class CategoriesController extends BaseController
         include $this->view('categories');
     }
 }
-?>

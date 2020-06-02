@@ -2,31 +2,34 @@
 
 declare(strict_types=1);
 
-class ArticlesController extends BaseController {
+class ArticlesController extends BaseController
+{
 
     public function __construct()
     {
-        $this->loadModels(['articles','tags','categories']);
+        $this->loadModels(['articles', 'tags', 'categories']);
     }
 
-    public function index() {
+    public function index()
+    {
 
         $articles = $this->model('articles')->getAll();
 
-        if(!$articles['success']){
-            $this->setResponseModel($articles['message'].'articles');
+        if (!$articles['success']) {
+            $this->setResponseModel($articles['message'] . 'articles');
         }
 
         include $this->view('articles');
     }
 
-    public function create() {
-        
+    public function create()
+    {
+
         $this->auth('ROLE_ADMIN');
 
         $categories = $this->model('categories')->getAll();
-        
-        if($this->submitForm()){
+
+        if ($this->submitForm()) {
 
             $this->model('articles')->setTitle($_POST['title']);
             $this->model('articles')->setDescription($_POST['description']);
@@ -36,15 +39,12 @@ class ArticlesController extends BaseController {
             $this->model('articles')->setUrlName($_POST['title']);
 
             $create = $this->model('articles')->create();
-            
-            if(!$create['success']){
-                $this->setResponseModel($create['message']);
-            }else {
 
+            if (!$create['success']) {
+                $this->setResponseModel($create['message']);
             }
         }
 
         include $this->view('articles', 'create');
     }
 }
-?>

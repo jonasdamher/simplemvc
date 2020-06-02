@@ -19,7 +19,7 @@ class Utils
 
 	public static function menuActive(string $page): string
 	{
-		if ($_GET['controller'] != $page) {
+		if ($page != $_GET['controller']) {
 			return '';
 		}
 		return 'active';

@@ -152,4 +152,3 @@ class UsersModel extends BaseModel
 		return password_hash($this->getPassword(), PASSWORD_DEFAULT);
 	}
 }
-?>

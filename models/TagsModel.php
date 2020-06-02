@@ -45,7 +45,7 @@ class TagsModel extends BaseModel
 		return $this->name;
 	}
 
-	public function create():array
+	public function create(): array
 	{
 		try {
 
@@ -69,6 +69,4 @@ class TagsModel extends BaseModel
 			return $this->response();
 		}
 	}
-	
 }
-?>

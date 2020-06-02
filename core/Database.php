@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 class Database
 {
-    private static string $driver;
-    private static string $dns;
-    private static ?int $port = null;
-    private static string $databaseName;
-    private static string $charset;
-    private static string $userName;
-    private static string $password;
+    private static string $driver = '';
+    private static string $dns = '';
+    private static int $port = 0;
+    private static string $databaseName = '';
+    private static string $charset = '';
+    private static string $userName = '';
+    private static string $password = '';
 
     private static ?object $connection = null;
 
@@ -34,11 +34,9 @@ class Database
         return self::$dns;
     }
 
-    private static function setPort(?int $port)
+    private static function setPort(int $port)
     {
-        if (!is_null($port)) {
-            self::$port = $port;
-        }
+        self::$port = $port;
     }
 
     private static function getPort(): int

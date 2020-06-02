@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-class UsersController extends BaseController {
+class UsersController extends BaseController
+{
 
     public function __construct()
     {
@@ -10,18 +11,18 @@ class UsersController extends BaseController {
         $this->loadModels(['users']);
     }
 
-    public function profile() {
-        
+    public function profile()
+    {
+
         $this->model('users')->setId($_SESSION['userInit']);
         $user = $this->model('users')->get();
         Head::setDescription('Hola');
-        
-        include $this->view('users','profile');
+
+        include $this->view('users', 'profile');
     }
 
-    public function logout() {
+    public function logout()
+    {
         $this->model('users')->logout();
     }
 }
-
-?>
