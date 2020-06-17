@@ -6,6 +6,7 @@
 <!-- SCRIPT -->
 <script src="<?= URL_BASE ?>/public/js/dom.js" defer></script>
 <script src="<?= URL_BASE ?>/public/js/main.js" defer></script>
+<script src="<?= URL_BASE ?>/public/js/all.min.js" defer></script>
 </body>
 
 </html>
