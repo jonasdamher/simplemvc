@@ -8,7 +8,7 @@ body {
   font-family: sans-serif;
   font-size: 16px;
   color: #222;
-  background-color: #f3f3f3;
+  background-color: #fff;
 }
 
 .container {
@@ -24,11 +24,11 @@ body {
 }
 
 .navbar {
-  background-color: #2e2c33;
+  background-color: transparent;
 }
 
 .navbar-body {
-  padding: 0.6rem 2rem;
+  padding: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,19 +51,20 @@ body {
   position: relative;
 }
 
+.navbar-menu li a span {
+  margin-right: .7rem;
+}
+
 .navbar-menu li a,
 .navbar-menu li .btn-dropdown {
   text-decoration: none;
   color: rgb(209, 209, 209);
 }
 
+.navbar-menu .active a,
 .navbar-menu li a:focus,
 .navbar-menu li a:hover {
-  color: #fff;
-}
-
-.navbar-menu .active a {
-  color: #fff;
+  color: #222;
 }
 
 .footer-body {
@@ -113,6 +114,7 @@ body {
   cursor: pointer;
   text-decoration: none;
   border: 0;
+  outline: 0;
   background-color: transparent;
 }
 
@@ -214,7 +216,7 @@ body {
 
 .logo {
   width: 100%;
-  max-width: 32px;
+  max-width: 64px;
   height: auto;
 }
 
