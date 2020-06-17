@@ -7,17 +7,21 @@ class AjaxController extends BaseController
 
     public function __construct()
     {
-        $this->auth('ROLE_ADMIN');
+        // $this->auth('ROLE_ADMIN');
     }
 
-    private function responseJson(array $data)
+    private function jsonResponse(array $data)
     {
-        die(json_encode($data));
+        exit(json_encode($data));
     }
 
-    private function requestPost(): array
+    private function postRequest(): array
     {
         try {
+
+            if (!isset($_POST['form'])) {
+                throw new Exception("Don't exist parameter 'form' in post request.");
+            }
 
             $json = json_decode($_POST['form'], true);
 
@@ -27,46 +31,66 @@ class AjaxController extends BaseController
 
             return $json;
         } catch (Exception $e) {
-            $this->responseJson(['success' => false, 'message' => $e->getMessage()]);
+            $this->jsonResponse(['success' => false, 'message' => $e->getMessage()]);
         }
     }
 
-    private function requestGet()
+    private function getRequest()
     {
         try {
 
             if (!isset($_GET['id'])) {
-                throw new Exception("Don't exist id parameter");
+                throw new Exception("Don't exist id parameter.");
             }
 
             $id = trim($_GET['id']);
 
             if (empty($id)) {
-                throw new Exception("Don't valid id parameter, empty parameter");
+                throw new Exception("Don't valid id parameter, empty parameter.");
             }
 
             return $id;
         } catch (Exception $e) {
-            $this->responseJson(['success' => false, 'message' => $e->getMessage()]);
+            $this->jsonResponse(['success' => false, 'message' => $e->getMessage()]);
         }
+    }
+
+    public function nuevaCategoria()
+    {
+        // Coger todos los datos JSON en petición POST enviado por JS 
+        $posts = $this->postRequest();
+        
+        // Cargar modelo categorías
+        $this->loadModels(['categories']);
+
+        // Pasarle al modelo los datos recogidos por POST
+        $this->model('categories')->setName($posts['name']);
+
+        // Crear categoría
+        $create = $this->model('categories')->create();
+
+        /**
+         * Devuelve respuesta de la variable $create, 
+         * transforma el array de la variable a un JSON
+         */
+        $this->jsonResponse($create);
     }
 
     public function getCategory()
     {
         $this->loadModels(['categories']);
 
-        $this->model('categories')->setId($this->requestGet());
+        $this->model('categories')->setId($this->getRequest());
 
-        $this->responseJson($this->model('categories')->get());
+        $this->jsonResponse($this->model('categories')->get());
     }
 
     public function deleteCategory()
     {
         $this->loadModels(['categories']);
 
-        $this->model('categories')->setId($this->requestGet());
+        $this->model('categories')->setId($this->getRequest());
 
-        $this->responseJson($this->model('categories')->delete());
+        $this->jsonResponse($this->model('categories')->delete());
     }
 }
-?>
