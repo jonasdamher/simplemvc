@@ -4,14 +4,22 @@ declare(strict_types=1);
 
 class Router
 {
-
-    private $controller;
-    private $action;
+    private ?string $api;
+    private string $controller;
+    private string $action;
 
     public function __construct()
     {
+        $this->api = $_GET['api'] ?? null;
+
         $this->controller = strtolower(trim($_GET['controller'] ?? 'home'));
         $this->action = strtolower(trim($_GET['action'] ?? 'index'));
+        
+        !is_null($this->api) ? $this->api() : $this->controller();
+    }
+
+    private function api(){
+        $this->action = 'api'.ucfirst($this->action);
         $this->controller();
     }
 
@@ -26,6 +34,7 @@ class Router
         if (!class_exists($className)) {
             Utils::redirection('error/error404');
         }
+        
         $controller = new $className();
         $this->action($controller);
     }
