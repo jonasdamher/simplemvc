@@ -138,7 +138,7 @@ class UsersModel extends BaseModel
 
 	private function sessionInit($userData)
 	{
-		$_SESSION['userInit'] = $userData['id'];
+		$_SESSION['userId'] = $userData['id'];
 		$_SESSION['userName'] = $userData['name'];
 		$_SESSION['userRolName'] = $userData['rol'];
 		$_SESSION['userIdRol'] = $userData['idRol'];
