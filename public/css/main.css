@@ -28,7 +28,7 @@ body {
 }
 
 .navbar-body {
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,13 +58,13 @@ body {
 .navbar-menu li a,
 .navbar-menu li .btn-dropdown {
   text-decoration: none;
-  color: rgb(209, 209, 209);
+  color: #222;
 }
 
 .navbar-menu .active a,
 .navbar-menu li a:focus,
 .navbar-menu li a:hover {
-  color: #222;
+  color: #ff6347;
 }
 
 .footer-body {

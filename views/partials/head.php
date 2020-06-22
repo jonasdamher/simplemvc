@@ -5,7 +5,7 @@
     <title><?= Head::title() ?> - simplymvcphp</title>
     <meta name="description" content="<?= Head::description() ?>" />
     <meta name="keywords" content="HTML, CSS, JavaScript"/>
-    <meta name="author" content="jonasdamher">
+    <meta name="author" content="jonasdamher" />
     <meta name="copyright" content="jonasdamher" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

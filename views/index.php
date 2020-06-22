@@ -1,11 +1,8 @@
 <?php
 include 'partials/head.php';
 
-if (empty($_SESSION)) {
-	include 'partials/navbar.php';
-} else {
-	include 'partials/navbarAdmin.php';
-}
+include 'partials/' . (empty($_SESSION) ? 'navbar' : 'navbarAdmin') . '.php';
+
 ?>
 <main>
 	<?php include $this->currentView['section'] . '/' . $this->currentView['view'] . '.php'; ?>
