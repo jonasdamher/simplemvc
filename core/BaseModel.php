@@ -29,6 +29,9 @@ class BaseModel
 		return $this->response;
 	}
 
+	/**
+	 * Devuelve todos los campos de todos los registros de una tabla.
+	 */
 	protected function find(): array
 	{
 		try {
@@ -57,6 +60,9 @@ class BaseModel
 		}
 	}
 
+	/**
+	 * Devuelve todos los campos de un registro por el ID.
+	 */
 	protected function findById(int $id): array
 	{
 		try {
@@ -88,6 +94,9 @@ class BaseModel
 		}
 	}
 
+	/**
+	 * Borra un registro por el ID.
+	 */
 	protected function deleteById(int $id): array
 	{
 		try {
