@@ -8,7 +8,7 @@ class HomeController extends BaseController
     public function __construct()
     {
         $this->auth();
-        $this->loadModels(['articles']);
+        $this->modelLoading(['articles']);
     }
 
     public function index()

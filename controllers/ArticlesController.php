@@ -7,7 +7,7 @@ class ArticlesController extends BaseController
 
     public function __construct()
     {
-        $this->loadModels(['articles', 'tags', 'categories']);
+        $this->modelLoading(['articles', 'tags', 'categories']);
     }
 
     public function index()

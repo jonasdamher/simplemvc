@@ -8,7 +8,7 @@ class LoginController extends BaseController
     public function __construct()
     {
         $this->auth();
-        $this->loadModels(['users']);
+        $this->modelLoading(['users']);
     }
 
     public function index()

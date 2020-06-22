@@ -8,13 +8,13 @@ class UsersController extends BaseController
     public function __construct()
     {
         $this->auth('ROLE_ADMIN');
-        $this->loadModels(['users']);
+        $this->modelLoading(['users']);
     }
 
     public function profile()
     {
 
-        $this->model('users')->setId($_SESSION['userInit']);
+        $this->model('users')->setId($_SESSION['userId']);
         $user = $this->model('users')->get();
         Head::setDescription('Hola');
 
