@@ -2,10 +2,7 @@
 # No mostrar listado de carpetas
 IndexIgnore *
 
-# 
 Options +FollowSymLinks
-
-# 
 Options -Indexes
 
 # Para que no salga la versión actual de Apache
@@ -33,13 +30,45 @@ ServerSignature Off
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
 
- # Urls amigables API
+  # Urls amigables API
+
   RewriteRule ^api/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([0-9]+)$ index.php?api=api&controller=$1&action=$2&id=$3 [L]
   RewriteRule ^api/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?api=api&controller=$1&action=$2 [L,QSA]
 
   # Urls amigables
+
   RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([0-9]+)$ index.php?controller=$1&action=$2&id=$3 [L]
   RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?controller=$1&action=$2 [L,QSA]
   RewriteRule ^([a-zA-Z0-9]+)$ index.php?controller=$1 [L,QSA]
  
+</IfModule>
+
+# Caché
+
+<IfModule mod_expires.c>
+  
+  ExpiresActive On
+
+  # Guardar archivos en caché durante 5 días
+  
+  ExpiresByType font/ttf A432000
+  ExpiresByType font/woff A432000
+  ExpiresByType font/eot A432000
+  ExpiresByType font/woff2 A432000
+  ExpiresByType image/svg+xml A432000
+  ExpiresByType image/webp A432000
+  ExpiresByType image/png A432000
+  ExpiresByType text/css A432000
+  ExpiresByType text/javascript A432000
+  ExpiresByType application/javascript A432000
+  ExpiresByType application/x-javascript A432000
+
+</IfModule>
+
+# Compresión
+
+<IfModule mod_brotli.c>
+  
+  SetOutputFilter BROTLI_COMPRESS
+
 </IfModule>
