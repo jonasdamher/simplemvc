@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+/**
+ * Clase para recibir/enviar solicitudes JSON.
+ */
 class JsonRequest
 {
 

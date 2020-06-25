@@ -26,6 +26,8 @@ class LoginController extends BaseController
             }
         }
 
+        Head::title('login');
+
         include $this->view('users', 'login');
     }
 }

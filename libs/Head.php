@@ -2,27 +2,43 @@
 
 declare(strict_types=1);
 
+/**
+ * Clase para añadir el título a la página 
+ * y añadir información a las meta etiquetas HTML
+ */
 class Head
 {
 	private static string $title = '';
 	private static string $description = 'Example page, using PHP with MVC architecture';
 
-	public static function setTitle(string $title)
+	/**
+	 * Establecer título de página web.
+	 */
+	public static function title(string $title)
 	{
-		self::$title = $title;
+		self::$title = $title . ' -';
 	}
 
-	public static function title(): string
+	/**
+	 * Devuelve el título de página web.
+	 */
+	public static function getTitle(): string
 	{
 		return self::$title;
 	}
 
-	public static function setDescription(string $description)
+	/**
+	 * Establecer descripción de página web.
+	 */
+	public static function description(string $description)
 	{
 		self::$description = $description;
 	}
 
-	public static function description(): string
+	/**
+	 * Devuelve la descripción de página web.
+	 */
+	public static function getDescription(): string
 	{
 		return self::$description;
 	}

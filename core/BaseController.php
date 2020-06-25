@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+/**
+ * Controlador base, administra los modelos, 
+ * vistas, permisos de usuario y peticiones formato JSON
+ */
 class BaseController
 {
 
@@ -38,7 +42,7 @@ class BaseController
 	}
 
 	/**
-	 * Para recoger respuestas o enviar json
+	 * Para solicitudes JSON.
 	 */
 	public function json(): object
 	{

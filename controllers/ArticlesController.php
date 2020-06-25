@@ -19,6 +19,8 @@ class ArticlesController extends BaseController
             $this->setResponseModel($articles['message'] . 'articles');
         }
 
+        Head::title('article');
+
         include $this->view('articles');
     }
 
@@ -44,6 +46,8 @@ class ArticlesController extends BaseController
                 $this->setResponseModel($create['message']);
             }
         }
+
+        Head::title('article create');
 
         include $this->view('articles', 'create');
     }

@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+/**
+ * Clase para establecer conexión a la base de datos.
+ */
 class Database
 {
     private static string $driver = '';
@@ -14,96 +17,32 @@ class Database
 
     private static ?object $connection = null;
 
-    private static function setDriver(string $driver)
-    {
-        self::$driver = $driver;
-    }
-
-    private static function getDriver(): string
-    {
-        return self::$driver;
-    }
-
-    private static function setDns(string $dns)
-    {
-        self::$dns = $dns;
-    }
-
-    private static function getDns(): string
-    {
-        return self::$dns;
-    }
-
-    private static function setPort(int $port)
-    {
-        self::$port = $port;
-    }
-
-    private static function getPort(): int
-    {
-        return self::$port;
-    }
-
-    private static function setDatabaseName(string $databaseName)
-    {
-        self::$databaseName = $databaseName;
-    }
-
-    private static function getDatabaseName(): string
-    {
-        return self::$databaseName;
-    }
-
-    private static function setCharset(string $charset)
-    {
-        self::$charset = $charset;
-    }
-
-    private static function getCharset(): string
-    {
-        return self::$charset;
-    }
-
-    private static function setUserName(string $userName)
-    {
-        self::$userName = $userName;
-    }
-
-    private static function getUserName(): string
-    {
-        return self::$userName;
-    }
-
-    private static function setPassword(string $password)
-    {
-        self::$password = $password;
-    }
-
-    private static function getPassword(): string
-    {
-        return self::$password;
-    }
-
+    /**
+     * Añadir credenciales para conexión a la base de datos.
+     */
     private static function credentials()
     {
         $credentials = require_once 'conf/credentials.php';
 
-        self::setDriver($credentials['driver']);
-        self::setDns($credentials['dns']);
-        self::setPort($credentials['port']);
-        self::setDatabaseName($credentials['databaseName']);
-        self::setCharset($credentials['charset']);
-        self::setUserName($credentials['userName']);
-        self::setPassword($credentials['password']);
+        self::$driver = $credentials['driver'];
+        self::$dns = $credentials['dns'];
+        self::$port = $credentials['port'];
+        self::$databaseName = $credentials['databaseName'];
+        self::$charset = $credentials['charset'];
+        self::$userName = $credentials['userName'];
+        self::$password = $credentials['password'];
     }
 
+    /**
+     * Iniciar la conexión a la base de datos.
+     */
     private static function connectionTo(): object
     {
         try {
             self::credentials();
 
-            $dns = self::getDriver() . ':host=' . self::getDns() . '; port=' . self::getPort() . '; dbname=' . self::getDatabaseName() . '; charset=' . self::getCharset();
-            $pdoConnection = new PDO($dns, self::getUserName(), self::getPassword());
+            $dns = self::$driver . ':host=' . self::$dns . '; port=' . self::$port . '; dbname=' . self::$databaseName . '; charset=' . self::$charset;
+            $pdoConnection = new PDO($dns, self::$userName, self::$password);
             $pdoConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             return $pdoConnection;
@@ -112,6 +51,9 @@ class Database
         }
     }
 
+    /**
+     * Conectar a la DB.
+     */
     public static function connect(): object
     {
         if (self::$connection == null) {
@@ -120,9 +62,11 @@ class Database
         return self::$connection;
     }
 
+    /**
+     * Desconectar de la DB.
+     */
     public static function disconnect()
     {
         self::$connection = null;
     }
 }
-?>

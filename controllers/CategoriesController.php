@@ -28,6 +28,8 @@ class CategoriesController extends BaseController
 
         $categories = $this->model('categories')->getAll();
 
+        Head::title('categories');
+
         include $this->view('categories');
     }
 

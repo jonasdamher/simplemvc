@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+/**
+ * Credenciales a la DB
+ */
 return [
 	'driver' => 'mysql',
 	'dns' => 'localhost',
