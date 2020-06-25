@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+/**
+ * Modelo de usuario
+ */
 class UsersModel extends BaseModel
 {
 
@@ -15,6 +18,8 @@ class UsersModel extends BaseModel
 		$table = 'users';
 		parent::__construct($table);
 	}
+
+	// Gets y sets
 
 	public function setId($id)
 	{
@@ -56,11 +61,19 @@ class UsersModel extends BaseModel
 		return $this->password;
 	}
 
+	// Fin gets y sets
+
+	/**
+	 * Buscar usuario por ID
+	 */
 	public function get(): array
 	{
 		return $this->findById($this->getId());
 	}
 
+	/**
+	 * Crear cuenta de usuario
+	 */
 	public function signup(): array
 	{
 		try {
@@ -87,6 +100,9 @@ class UsersModel extends BaseModel
 		}
 	}
 
+	/**
+	 * Iniciar sesión con una cuenta de usuario
+	 */
 	public function login(): array
 	{
 		try {
@@ -127,6 +143,9 @@ class UsersModel extends BaseModel
 		}
 	}
 
+	/**
+	 * Salir de sesión activa de usuario
+	 */
 	public function logout()
 	{
 		session_unset();
@@ -136,6 +155,9 @@ class UsersModel extends BaseModel
 		Utils::redirection('home');
 	}
 
+	/**
+	 * Variables de sesión de usuario, $_SESSION
+	 */
 	private function sessionInit($userData)
 	{
 		$_SESSION['userId'] = $userData['id'];
@@ -147,6 +169,9 @@ class UsersModel extends BaseModel
 		Utils::redirection('users/profile');
 	}
 
+	/**
+	 * Encriptar contraseña de usuario
+	 */
 	private function criptoPassword(): string
 	{
 		return password_hash($this->getPassword(), PASSWORD_DEFAULT);

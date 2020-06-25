@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+/**
+ * Modelo de artículo
+ */
 class ArticlesModel extends BaseModel
 {
 
@@ -18,6 +21,8 @@ class ArticlesModel extends BaseModel
 		$table = 'articles';
 		parent::__construct($table);
 	}
+
+	// Gets y sets
 
 	public function setId($id)
 	{
@@ -91,21 +96,32 @@ class ArticlesModel extends BaseModel
 		return $this->urlName;
 	}
 
+	// Fin gets y sets
+
+	/**
+	 * Buscar artículo por ID
+	 */
 	public function get(): array
 	{
 		return $this->findById($this->getId());
 	}
 
+	/**
+	 * Coger todos los artículos que existen
+	 */
 	public function getAll(): array
 	{
 		return $this->find();
 	}
 
+	/**
+	 * Crear un artículo
+	 */
 	public function create(): array
 	{
 		try {
 
-			$consult = Database::connect()->prepare("INSERT INTO $this->table (title, description, main, idUser, idCategory, urlName) VALUES (:title, :description, :main, :idUser, :idCategory, :urlName)");
+			$consult = Database::connect()->prepare("INSERT INTO $this->table title, description, main, idUser, idCategory, urlName VALUES :title, :description, :main, :idUser, :idCategory, :urlName");
 
 			$consult->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
 			$consult->bindValue(':description', $this->getDescription(), PDO::PARAM_STR);

@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+/**
+ * Modelo de etiqueta de un artículo
+ */
 class TagsModel extends BaseModel
 {
 
@@ -14,6 +17,8 @@ class TagsModel extends BaseModel
 		$table = 'art_tags';
 		parent::__construct($table);
 	}
+
+	// Gets y sets
 
 	public function setId($id)
 	{
@@ -45,11 +50,16 @@ class TagsModel extends BaseModel
 		return $this->name;
 	}
 
+	// Fin gets y sets
+
+	/**
+	 * Crear una etiqueta de un artículo
+	 */
 	public function create(): array
 	{
 		try {
 
-			$consult = Database::connect()->prepare("INSERT INTO $this->table (idArticle, name) VALUES (:idArticle, :name)");
+			$consult = Database::connect()->prepare("INSERT INTO $this->table idArticle, name VALUES :idArticle, :name");
 
 			$consult->bindValue(':idArticle', $this->getIdArticle(), PDO::PARAM_INT);
 			$consult->bindValue(':name', $this->getName(), PDO::PARAM_STR);

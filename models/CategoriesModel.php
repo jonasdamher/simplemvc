@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+/**
+ * Modelo de categoría de un artículo
+ */
 class CategoriesModel extends BaseModel
 {
 
@@ -13,6 +16,8 @@ class CategoriesModel extends BaseModel
 		$table = 'art_categories';
 		parent::__construct($table);
 	}
+
+	// Gets y sets
 
 	public function setId($id)
 	{
@@ -34,16 +39,27 @@ class CategoriesModel extends BaseModel
 		return $this->name;
 	}
 
+	// Fin gets y sets
+
+	/**
+	 * Buscar categoría por ID
+	 */
 	public function get(): array
 	{
 		return $this->findById($this->getId());
 	}
 
+	/**
+	 * Coger todos las categorías que existen
+	 */
 	public function getAll(): array
 	{
 		return $this->find();
 	}
 
+	/**
+	 * Crear nueva categoría
+	 */
 	public function create(): array
 	{
 		try {
@@ -68,11 +84,17 @@ class CategoriesModel extends BaseModel
 		}
 	}
 
+	/**
+	 * Borrar categoría por ID
+	 */
 	public function delete(): array
 	{
 		return $this->deleteById($this->getId());
 	}
 
+	/**
+	 * Actualizar categoría por ID
+	 */
 	public function update(): array
 	{
 		try {
