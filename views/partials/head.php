@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <title><?= Head::title() ?> - simplymvcphp</title>
-    <meta name="description" content="<?= Head::description() ?>" />
+    <title><?= Head::getTitle() ?> simplymvcphp</title>
+    <meta name="description" content="<?= Head::getDescription() ?>" />
     <meta name="keywords" content="HTML, CSS, JavaScript"/>
     <meta name="author" content="jonasdamher" />
     <meta name="copyright" content="jonasdamher" />
