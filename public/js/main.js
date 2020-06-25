@@ -13,7 +13,7 @@ $(function () {
     });
   }
 
-  function modalRemove(data,id) {
+  function modalRemove(data, id) {
     if (!data.success) {
       $("#error-request-remove").show();
       $("#error-request-remove").text(data.message);
@@ -22,7 +22,7 @@ $(function () {
 
     $("#request-success-remove").show();
     $("#request-success-remove").text("Success, Remove category !");
-    $('#table-categories').child('tbody').child(`tr[data-id=${id}]`).remove();
+    $("#table-categories").child("tbody").child(`tr[data-id=${id}]`).remove();
   }
 
   // REMOVE CATEGORY
@@ -31,7 +31,7 @@ $(function () {
 
     get("deleteCategory/" + id).done(function (json) {
       var data = JSON.parse(json);
-      modalRemove(data,id);
+      modalRemove(data, id);
     });
   });
 
