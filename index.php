@@ -11,9 +11,10 @@ require_once 'conf/Globals.php';
 require_once 'libs/autoload.php';
 
 // Clases de ayuda
+require_once 'libs/Utils.php';
+require_once 'libs/Auth.php';
 require_once 'libs/JsonRequest.php';
 require_once 'libs/Head.php';
-require_once 'libs/Utils.php';
 
 // Clases principales de la webapp
 require_once 'core/Database.php';
