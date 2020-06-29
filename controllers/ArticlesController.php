@@ -7,6 +7,8 @@ class ArticlesController extends BaseController
 
     public function __construct()
     {
+        parent::__construct();
+        
         $this->modelLoading(['articles', 'tags', 'categories']);
     }
 
@@ -26,8 +28,7 @@ class ArticlesController extends BaseController
 
     public function create()
     {
-
-        $this->auth('ROLE_ADMIN');
+        $this->auth->role('ROLE_ADMIN');
 
         $categories = $this->model('categories')->getAll();
 

@@ -7,7 +7,9 @@ class UsersController extends BaseController
 
     public function __construct()
     {
-        $this->auth('ROLE_ADMIN');
+        parent::__construct();
+        $this->auth->role('ROLE_ADMIN');
+
         $this->modelLoading(['users']);
     }
 

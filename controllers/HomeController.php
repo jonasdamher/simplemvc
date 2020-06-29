@@ -7,7 +7,9 @@ class HomeController extends BaseController
 
     public function __construct()
     {
-        $this->auth();
+        parent::__construct();
+        $this->auth->role();
+        
         $this->modelLoading(['articles']);
     }
 
