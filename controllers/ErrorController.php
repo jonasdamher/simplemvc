@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+/**
+ * Controlador para vistas de errores http
+ */
 class ErrorController extends BaseController
 {
 
