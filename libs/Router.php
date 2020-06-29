@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /**
- * Clase para controlar las rutas de la página, comprueba 
+ * Router para controlar las rutas de la página, comprueba 
  * si existe el controlador y la acción del controlador.
  */
 
 /**
- * Recoge las variables GET y llama al método controller
+ * Recoge las variables GET.
  */
 $controller = strtolower(trim($_GET['controller'] ?? 'home'));
 $action = strtolower(trim($_GET['action'] ?? 'index'));
@@ -21,6 +21,7 @@ if (!is_null($api)) {
 
 /**
  * Comprueba que existe el archivo y la clase controlador
+ * e instancia el controlador.
  */
 $className = $controller . 'Controller';
 
@@ -36,7 +37,7 @@ $controller = new $className();
 
 /**
  * Comprueba que existe el método en el controlador y 
- * devuelve una instancia del controlador con el método
+ * utilizado el método si es correcto.
  */
 if (!method_exists($controller, $action)) {
     Utils::redirection('error/error404');
