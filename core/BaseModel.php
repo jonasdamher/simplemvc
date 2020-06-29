@@ -49,7 +49,38 @@ class BaseModel
 	{
 		try {
 
-			$consult = Database::connect()->prepare("SELECT * FROM $this->table ORDER BY id DESC");
+			$consult = Database::connect()->prepare("SELECT * FROM $this->table");
+			$consult->execute();
+
+			if ($consult->rowCount() == 0) {
+				throw new Exception("Don't exist ");
+			}
+
+			$result = $consult->fetchAll(PDO::FETCH_ASSOC);
+
+			$this->success($result);
+		} catch (Exception $e) {
+
+			$this->fail($e->getMessage());
+		} catch (PDOException $e) {
+
+			$this->fail($e->getMessage());
+		} finally {
+
+			$consult = null;
+			Database::disconnect();
+			return $this->response();
+		}
+	}
+
+	/**
+	 * Devuelve los campos especificados de todos los registros de una tabla.
+	 */
+	protected function findFields(string $fields): array
+	{
+		try {
+
+			$consult = Database::connect()->prepare("SELECT $fields FROM $this->table");
 			$consult->execute();
 
 			if ($consult->rowCount() == 0) {
@@ -82,8 +113,73 @@ class BaseModel
 
 			$consult = Database::connect()->prepare("SELECT * FROM $this->table WHERE id=:id");
 
-			$consult->bindValue(':id', $id, PDO::PARAM_STR);
+			$consult->bindValue(':id', $id, PDO::PARAM_INT);
+			$consult->execute();
 
+			if ($consult->rowCount() == 0) {
+				throw new Exception('Not found');
+			}
+
+			$result = $consult->fetch(PDO::FETCH_ASSOC);
+
+			$this->success($result);
+		} catch (Exception $e) {
+
+			$this->fail($e->getMessage());
+		} catch (PDOException $e) {
+
+			$this->fail($e->getMessage());
+		} finally {
+
+			$consult = null;
+			Database::disconnect();
+			return $this->response();
+		}
+	}
+
+	/**
+	 * Devuelve los campos especificados de un registro por el ID.
+	 */
+	protected function findFieldsById(string $fields, int $id): array
+	{
+		try {
+
+			$consult = Database::connect()->prepare("SELECT $fields FROM $this->table WHERE id=:id");
+
+			$consult->bindValue(':id', $id, PDO::PARAM_INT);
+			$consult->execute();
+
+			if ($consult->rowCount() == 0) {
+				throw new Exception('Not found');
+			}
+
+			$result = $consult->fetch(PDO::FETCH_ASSOC);
+
+			$this->success($result);
+		} catch (Exception $e) {
+
+			$this->fail($e->getMessage());
+		} catch (PDOException $e) {
+
+			$this->fail($e->getMessage());
+		} finally {
+
+			$consult = null;
+			Database::disconnect();
+			return $this->response();
+		}
+	}
+
+	/**
+	 * Devuelve los campos especificados de un registro por el nombre de campo indicado.
+	 */
+	protected function findFieldsByName(string $fields, string $fieldName, string $find): array
+	{
+		try {
+
+			$consult = Database::connect()->prepare("SELECT $fields FROM $this->table WHERE $fieldName=:field");
+
+			$consult->bindValue(':field', $find, PDO::PARAM_STR);
 			$consult->execute();
 
 			if ($consult->rowCount() == 0) {
