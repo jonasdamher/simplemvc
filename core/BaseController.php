@@ -14,13 +14,13 @@ class BaseController
 	private string $responseModel = '';
 
 	// Otros módulos.
-	protected ?JsonRequest $json = null;
 	protected ?Auth $auth = null;
+	protected ?JsonRequest $json = null;
 	
 	public function __construct()
 	{
 		$this->auth = new Auth;
-		$this->jsonReq = new JsonRequest;
+		$this->json = new JsonRequest;
 	}
 
 	/**
