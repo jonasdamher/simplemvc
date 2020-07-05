@@ -8,14 +8,15 @@ declare(strict_types=1);
  */
 
 /**
- * Recoge las variables GET.
+ * Recoge los parámetros GET.
  */
 $controller = strtolower(trim($_GET['controller'] ?? 'home'));
 $action = strtolower(trim($_GET['action'] ?? 'index'));
 
 $api = $_GET['api'] ?? null;
 
-if (!is_null($api)) {
+if (!is_null($api) && $api == 'api') {
+
     $action = 'api' . ucfirst($action);
 }
 
@@ -37,7 +38,7 @@ $controller = new $className();
 
 /**
  * Comprueba que existe el método en el controlador y 
- * utilizado el método si es correcto.
+ * utiliza el método si es correcto.
  */
 if (!method_exists($controller, $action)) {
     Utils::redirection('error/error404');
