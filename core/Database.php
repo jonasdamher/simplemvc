@@ -10,7 +10,9 @@ require_once 'core/DatabaseHandler.php';
 class Database extends DatabaseHandler
 {
     /**
-     * Conectar a la DB.
+     * Conectar a la DB.~
+     * @param string $db nombre de base de datos.
+     * @return object Conexión PDO a la base de datos.
      */
     public static function connect($db = null): object
     {
@@ -30,6 +32,7 @@ class Database extends DatabaseHandler
 
     /**
      * Desconectar de la DB.
+     * @param string $db nombre de base de datos.
      */
     public static function disconnect($db = null)
     {
