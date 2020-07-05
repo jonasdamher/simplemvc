@@ -6,22 +6,21 @@ Options +FollowSymLinks
 Options -Indexes
 
 # Para que no salga la versión actual de Apache
-
 ServerSignature Off
 
 # Denegar el acceso al archivo .htaccess
-
 <Files .htaccess>
   Order allow,deny
   Deny from all
 </Files>
 
 # Denegar el acceso a cualquier archivo con dichas extensiones
-
 <Files ~ "\.(env|md|gitignore|gitattributes|lock)$">
   Order allow,deny
   Deny from all
 </Files>
+
+# Rutas de la página web
 
 <IfModule mod_rewrite.c>
 
@@ -33,7 +32,7 @@ ServerSignature Off
   # Urls amigables API
 
   RewriteRule ^api/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([0-9]+)$ index.php?api=api&controller=$1&action=$2&id=$3 [L]
-  RewriteRule ^api/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?api=api&controller=$1&action=$2 [L,QSA]
+  RewriteRule ^api/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?api=api&controller=$1&action=$2 [L]
 
   # Urls amigables
 
@@ -65,7 +64,7 @@ ServerSignature Off
 
 </IfModule>
 
-# Compresión
+# Compresión de archivos
 
 <IfModule mod_brotli.c>
   
