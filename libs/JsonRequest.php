@@ -17,7 +17,7 @@ class JsonRequest
 	}
 
 	/**
-	 * Coge todos los datos pasados por post 
+	 * Coge todos los parámetros POST 
 	 * que han sido enviados mediante un json.
 	 */
 	public function postRequest(): array
@@ -41,7 +41,7 @@ class JsonRequest
 	}
 
 	/**
-	 * Coge todos los parametros get 
+	 * Coge todos los parámetros GET 
 	 * que han sido enviados mediante un json.
 	 */
 	public function getRequest()
