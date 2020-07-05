@@ -63,7 +63,7 @@ class BaseController
 	}
 
 	/**
-	 * Permite devuelver una vista.
+	 * Permite devolver una vista.
 	 */
 	protected function view(string $controller, string $action = 'index'): string
 	{
