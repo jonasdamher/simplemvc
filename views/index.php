@@ -1,22 +1,15 @@
 <?php
-include 'partials/head.php';
+include 'includes/head.php';
 
-/**
- * Incluye una barra de navegación distinta si estás iniciado sesión o no
- */
-include 'partials/' . (empty($_SESSION) ? 'navbar' : 'navbarAdmin') . '.php';
+include 'includes/navbar.php';
 
 ?>
 <main>
-<?php
-
-include View::controller() . '/' . View::action() . '.php';
-
-?>
+	<?php include View::controller() . '/' . View::action() . '.php'; ?>
 </main>
 
 <?php
 
-include 'partials/footer.php';
+include 'includes/footer.php';
 
 ?>

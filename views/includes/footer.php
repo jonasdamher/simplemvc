@@ -1,6 +1,6 @@
 <footer class="footer">
 	<div class="footer-body">
-	<?php include 'views/partials/footer/'.Footer::get().'.php'; ?>
+	<?php include 'views/includes/footer/'.Footer::get().'.php'; ?>
 	</div>
 </footer>
 <!-- SCRIPTS JS -->

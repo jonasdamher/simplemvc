@@ -19,5 +19,5 @@
 			</div>
 		</div>
 	</div>
-	<?php include 'views/components/snackbar.php'; ?>
+	<?php include 'views/includes/snackbar.php'; ?>
 </div>
