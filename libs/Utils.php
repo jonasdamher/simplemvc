@@ -27,12 +27,12 @@ class Utils
 	}
 
 	/**
-	 * Compara si el controlador actual es igual al parámetro pasado,
+	 * Compara si el nombre del controlador actual es igual al parámetro pasado,
 	 * si es así, devuelve "active" si no devuelve " ".
 	 */
 	public static function menuActive(string $page): string
 	{
-		if ($page != $_GET['controller']) {
+		if ($page != ($_GET['controller'] ?? 'home')) {
 			return '';
 		}
 		return 'active';
