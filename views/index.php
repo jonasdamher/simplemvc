@@ -10,7 +10,7 @@ include 'partials/' . (empty($_SESSION) ? 'navbar' : 'navbarAdmin') . '.php';
 <main>
 <?php
 
-include $this->currentView['section'] . '/' . $this->currentView['view'] . '.php';
+include View::controller() . '/' . View::action() . '.php';
 
 ?>
 </main>
