@@ -8,7 +8,7 @@ class ArticlesController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        
+
         $this->modelLoading(['articles', 'tags', 'categories']);
     }
 
@@ -21,9 +21,8 @@ class ArticlesController extends BaseController
             $this->setResponseModel($articles['message'] . 'articles');
         }
 
-        Head::title('article');
-
-        include $this->view('articles');
+        Head::title('articles');
+        include View::show('articles');
     }
 
     public function create()
@@ -49,7 +48,6 @@ class ArticlesController extends BaseController
         }
 
         Head::title('article create');
-
-        include $this->view('articles', 'create');
+        include View::show('articles', 'create');
     }
 }

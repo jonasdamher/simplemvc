@@ -9,7 +9,7 @@ class LoginController extends BaseController
     {
         parent::__construct();
         $this->auth->role();
-        
+
         $this->modelLoading(['users']);
     }
 
@@ -29,7 +29,6 @@ class LoginController extends BaseController
         }
 
         Head::title('login');
-
-        include $this->view('users', 'login');
+        include View::show('users', 'login');
     }
 }

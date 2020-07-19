@@ -22,7 +22,7 @@ class UsersController extends BaseController
         // Vista
 
         Head::title('users');
-        include $this->view('users', 'profile');
+        include View::show('users', 'profile');
     }
 
     public function logout()
