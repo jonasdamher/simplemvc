@@ -9,7 +9,6 @@ declare(strict_types=1);
 class BaseController
 {
 
-	protected array $currentView = [];
 	private array $models = [];
 	private string $responseModel = '';
 
@@ -60,21 +59,6 @@ class BaseController
 	public function model(string $modelName): object
 	{
 		return $this->models[$modelName];
-	}
-
-	/**
-	 * Permite devolver una vista.
-	 */
-	protected function view(string $controller, string $action = 'index'): string
-	{
-		if (!is_dir('views/' . $controller) || !is_file('views/' . $controller . '/' . $action . '.php')) {
-			Utils::redirection('error/error500');
-		}
-
-		$this->currentView['section'] = $controller;
-		$this->currentView['view'] = $action;
-
-		return 'views/index.php';
 	}
 
 	/**
