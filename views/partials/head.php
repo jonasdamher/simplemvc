@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <title><?= Head::getTitle() ?> simplymvcphp</title>
+    <title><?= Head::getTitle() ?>simplymvcphp</title>
     <meta name="description" content="<?= Head::getDescription() ?>" />
-    <meta name="keywords" content="HTML, CSS, JavaScript"/>
+    <meta name="keywords" content="<?= Head::getKeyWords() ?>" />
     <meta name="author" content="jonasdamher" />
     <meta name="copyright" content="jonasdamher" />
     <meta charset="UTF-8" />
@@ -13,9 +13,23 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="<?= URL_BASE ?>public/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="<?= URL_BASE ?>public/css/main.css" />
-    <!-- SCRIPTS -->
+    <?php
+    $totalLinksCss = count(Head::getLinksCss());
+    if ($totalLinksCss > 0) {
+        foreach (Head::getLinksCss() as $linkCss) { ?>
+            <link rel="stylesheet" type="text/css" href="<?= URL_BASE ?>public/css/<?= $linkCss ?>.css" />
+    <?php }
+    } ?>
+    <!-- SCRIPTS JS -->
     <script src="<?= URL_BASE ?>public/js/jquery-3.4.1.min.js"></script>
     <script src="<?= URL_BASE ?>public/js/ckeditor/ckeditor.js"></script>
+    <?php
+    $totalLinksJs = count(Head::getLinksJs());
+    if ($totalLinksJs > 0) {
+        foreach (Head::getLinksJs() as $linkJs) { ?>
+            <script src="<?= URL_BASE ?>public/js/<?= $linkJs ?>.js"></script>
+    <?php }
+    } ?>
 </head>
 
 <body>
