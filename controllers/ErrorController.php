@@ -10,13 +10,17 @@ class ErrorController extends BaseController
 
     public function error404()
     {
-        Head::title('error 404');
-        include View::show('error', '404');
+        $this->error('Error 404. No encontrado.', '404');
     }
 
     public function error500()
     {
-        Head::title('error 500');
-        include View::show('error', '500');
+        $this->error('Error 500. Error interno.', '500');
+    }
+
+    private function error(string $message, string $errorHttp)
+    {
+        Head::title('error ' . $errorHttp);
+        include View::show('error');
     }
 }
