@@ -1,4 +1,13 @@
 <?php
+/**
+ * 
+ * 
+ * @package simplymvc
+ * @version 1.0
+ * @license https://github.com/jonasdamher/simplifyimage/blob/master/LICENSE MIT License
+ * 
+ * @author Jonás Damián Hernández [jonasdamher]
+ */
 
 error_reporting(E_ALL);
 
@@ -14,7 +23,7 @@ require_once 'libs/autoload.php';
 require_once 'libs/Utils.php';
 require_once 'libs/Auth.php';
 require_once 'libs/JsonRequest.php';
-require_once 'libs/Head.php';
+require_once 'libs/View.php';
 
 // Clases principales de la webapp
 require_once 'core/Database.php';
