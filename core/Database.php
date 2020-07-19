@@ -40,4 +40,13 @@ class Database extends DatabaseHandler
 
         parent::$connections[$db] = null;
     }
+
+
+    /**
+     * Desconectar todas las conexiones a DDBB.
+     */
+    public static function disconnectAll()
+    {
+        parent::$connections = [];
+    }
 }
