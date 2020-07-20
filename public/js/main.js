@@ -13,18 +13,6 @@ $(function () {
     });
   }
 
-  function modalRemove(data, id) {
-    if (!data.success) {
-      $("#error-request-remove").show();
-      $("#error-request-remove").text(data.message);
-      return;
-    }
-
-    $("#request-success-remove").show();
-    $("#request-success-remove").text("Success, Remove category !");
-    $("#table-categories").child("tbody").child(`tr[data-id=${id}]`).remove();
-  }
-
   // REMOVE CATEGORY
   $("#btn-remove-category").click(function () {
     const id = $(this).val();
@@ -41,18 +29,6 @@ $(function () {
   });
 
   // MODAL REMOVE
-
-  function modalRemoveShowData(data, modal) {
-    if (!data.success) {
-      $("#error-request-remove").show();
-      $("#error-request-remove").text(data.message);
-      return;
-    }
-
-    $("#text-category-remove").text(data.result.name);
-    $("#btn-remove-category").val(data.result.id);
-    $(modal).show();
-  }
 
   // OPEN MODAL - REMOVE
   $(".btn-modal-remove").on("click", function () {
