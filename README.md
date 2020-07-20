@@ -1,4 +1,4 @@
-# simplymvcphp
+# simplemvc
 
 ### English
 * Using PHP with MVC architecture.
