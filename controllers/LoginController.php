@@ -28,7 +28,6 @@ class LoginController extends BaseController
             }
         }
 
-        Head::title('login');
         include View::show('users', 'login');
     }
 }

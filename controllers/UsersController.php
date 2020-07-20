@@ -19,9 +19,6 @@ class UsersController extends BaseController
         $this->model('users')->setId($_SESSION['userId']);
         $user = $this->model('users')->get();
 
-        // Vista
-
-        Head::title('users');
         include View::show('users', 'profile');
     }
 

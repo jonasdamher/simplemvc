@@ -29,7 +29,6 @@ class CategoriesController extends BaseController
 
         $categories = $this->model('categories')->getAll();
 
-        Head::title('categories');
         include View::show('categories');
     }
 
