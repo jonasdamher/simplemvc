@@ -21,7 +21,7 @@
     <?php }
     } ?>
     <!-- SCRIPTS JS -->
-    <script src="<?= URL_BASE ?>public/js/jquery-3.4.1.min.js"></script>
+    <script src="<?= URL_BASE ?>public/js/jquery-3.5.1.min.js"></script>
     <script src="<?= URL_BASE ?>public/js/ckeditor/ckeditor.js"></script>
     <?php
     $totalLinksJs = count(Head::getLinksJs());
