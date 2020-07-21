@@ -118,14 +118,14 @@ body {
   background-color: transparent;
 }
 
-.btn-orange {
+.btn-primary {
   color: #f3f3f3;
   border: solid 1px #0d3bd2;
   background-color: #0540ff;
 }
 
-.btn-orange:hover,
-.btn-orange:focus {
+.btn-primary:hover,
+.btn-primary:focus {
   color: #fff;
   background-color: #0d3bd2;
 }
