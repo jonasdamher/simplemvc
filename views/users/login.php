@@ -14,7 +14,7 @@
 						<label class="label" for="password">Password</label>
 						<input type="password" name="password" id="password" class="input" value="<?= Utils::postValue('password') ?>" required />
 					</div>
-					<button type="submit" class="btn btn-orange shadow-sm">Access</button>
+					<button type="submit" class="btn btn-primary shadow-sm">Access</button>
 				</form>
 			</div>
 		</div>

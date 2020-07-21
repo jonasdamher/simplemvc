@@ -4,7 +4,7 @@
 			<div class="card-body">
 				<div class="d-flex j-between pb-1 mb-1 border-bottom">
 					<h1>Categories</h1>
-					<button type="button" class="btn btn-orange btn-modal-new shadow-sm">New category</button>
+					<button type="button" class="btn btn-primary btn-modal-new shadow-sm">New category</button>
 				</div>
 				<?php if ($categories['success']) { ?>
 					<div class="table-responsive">
@@ -52,7 +52,7 @@
 						<label class="label" for="name">name</label>
 						<input type="text" name="name" id="name" class="input" required />
 					</div>
-					<button type="submit" class="btn btn-orange shadow-sm">Create</button>
+					<button type="submit" class="btn btn-primary shadow-sm">Create</button>
 				</form>
 			</div>
 		</div>
@@ -74,7 +74,7 @@
 					</div>
 					<div class="d-flex j-between">
 						<button type="button" class="btn btn-light shadow-sm btn-close-modal">Discard</button>
-						<button type="button" id="btn-remove-category" class="btn btn-orange shadow-sm">Remove</button>
+						<button type="button" id="btn-remove-category" class="btn btn-primary shadow-sm">Remove</button>
 					</div>
 				</form>
 			</div>
