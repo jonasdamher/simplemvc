@@ -1,10 +1,10 @@
 <?php
 /**
+ * Blog montado en PHP con arquitectura MVC
  * 
- * 
- * @package simplymvc
+ * @package simplemvc
  * @version 1.0
- * @license https://github.com/jonasdamher/simplifyimage/blob/master/LICENSE MIT License
+ * @license https://github.com/jonasdamher/simplemvc/blob/dev/LICENSE MIT License
  * 
  * @author Jonás Damián Hernández [jonasdamher]
  */
@@ -19,11 +19,11 @@ require_once 'conf/Globals.php';
 // Autocargar todas las clases
 require_once 'libs/autoload.php';
 
-// Clases de ayuda
-require_once 'libs/Utils.php';
+// Clases ayudantes
+require_once 'helpers/Utils.php';
+require_once 'helpers/View.php';
 require_once 'libs/Auth.php';
 require_once 'libs/JsonRequest.php';
-require_once 'libs/View.php';
 
 // Clases principales de la webapp
 require_once 'core/Database.php';
