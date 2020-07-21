@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-  padding: 2rem;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -28,7 +28,7 @@ body {
 }
 
 .navbar-body {
-  padding: 1rem;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,7 +52,7 @@ body {
 }
 
 .navbar-menu li a span {
-  margin-right: .7rem;
+  margin-right: 0.7rem;
 }
 
 .navbar-menu li a,
@@ -64,7 +64,7 @@ body {
 .navbar-menu .active a,
 .navbar-menu li a:focus,
 .navbar-menu li a:hover {
-  color: #ff6347;
+  color: #0540ff;
 }
 
 .footer-body {
@@ -120,14 +120,14 @@ body {
 
 .btn-orange {
   color: #f3f3f3;
-  border: solid 1px #e75b42;
-  background-color: #ff6347;
+  border: solid 1px #0d3bd2;
+  background-color: #0540ff;
 }
 
 .btn-orange:hover,
 .btn-orange:focus {
   color: #fff;
-  background-color: #e75b42;
+  background-color: #0d3bd2;
 }
 
 .btn-light {
@@ -183,6 +183,11 @@ body {
 .input {
   padding: 0.6rem;
   border: 1px solid rgba(34, 34, 34, 0.096);
+  outline: 0;
+}
+
+.input:focus{
+  border: 1px solid #2222224a;
 }
 
 .shadow-sm {
@@ -216,7 +221,7 @@ body {
 
 .logo {
   width: 100%;
-  max-width: 64px;
+  max-width: 52px;
   height: auto;
 }
 
@@ -292,7 +297,8 @@ body {
   border-collapse: collapse;
 }
 
-.table td, th {
+.table td,
+th {
   text-align: left;
   padding: 8px;
 }
@@ -305,7 +311,7 @@ body {
   padding-left: 0.8rem;
 }
 
-.d-flex{
+.d-flex {
   display: flex;
 }
 
@@ -337,7 +343,7 @@ body {
   border-bottom: 1px solid #22222218;
 }
 
-.snackbar{
+.snackbar {
   background: #222;
   color: white;
   position: fixed;
@@ -345,7 +351,7 @@ body {
   bottom: 1rem;
 }
 
-.snackbar-body{
+.snackbar-body {
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
