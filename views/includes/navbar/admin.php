@@ -18,7 +18,7 @@
 	</ul>
 </div>
 <div class="navbar-content">
-	<div class="text-light text-shadow-sm"><?= $_SESSION['userName'] ?></div>
+	<div class="text-shadow-sm"><?= $_SESSION['userName'] ?></div>
 	<span class="text-secondary separator-left">|</span>
-	<a class="btn text-light text-shadow-sm" href="<?= URL_BASE ?>/users/logout">Logout</a>
+	<a class="btn text-shadow-sm" href="<?= URL_BASE ?>/users/logout">Logout</a>
 </div>
