@@ -23,11 +23,22 @@ function modalRemove(data, id) {
 
 $(function () {
   $(".btn-dropdown").on("click", function () {
-    $(this).siblings(".dropdown").toggle();
-    $(this).toggleClass("active");
+    let btn = $(this);
+    btn.parent().siblings(".dropdown").toggle();
+    btn.toggleClass("active");
+
+    if (btn.hasClass("active")) {
+      btn.children("svg").removeClass("fa-caret-down").addClass("fa-caret-up");
+    } else {
+      btn.children("svg").removeClass("fa-caret-up").addClass("fa-caret-down");
+    }
   });
 
   $(".btn-snackbar-close").click(function () {
     $(this).parents(".snackbar").fadeOut(200);
+  });
+
+  $(".btn-close-modal").on("click", function () {
+    $(this).parents(".modal").hide();
   });
 });

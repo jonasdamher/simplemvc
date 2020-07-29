@@ -11,7 +11,3 @@ function get(route) {
     return json;
   });
 }
-
-$(".btn-close-modal").on("click", function () {
-  $(this).parents(".modal").hide();
-});
