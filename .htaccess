@@ -29,6 +29,12 @@ ServerSignature Off
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
 
+  # Errores HTTP
+
+  ErrorDocument 404 /simplymvcphp/index.php?controller=error&action=404
+  ErrorDocument 500 /simplymvcphp/index.php?controller=error&action=500
+  ErrorDocument 401 /simplymvcphp/index.php?controller=error&action=401
+
   # Urls amigables API
 
   RewriteRule ^api/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([0-9]+)$ index.php?api=api&controller=$1&action=$2&id=$3 [L]
@@ -48,19 +54,19 @@ ServerSignature Off
   
   ExpiresActive On
 
-  # Guardar archivos en caché durante 5 días
+  # Guardar archivos en caché durante 1 año
   
-  ExpiresByType font/ttf A432000
-  ExpiresByType font/woff A432000
-  ExpiresByType font/eot A432000
-  ExpiresByType font/woff2 A432000
-  ExpiresByType image/svg+xml A432000
-  ExpiresByType image/webp A432000
-  ExpiresByType image/png A432000
-  ExpiresByType text/css A432000
-  ExpiresByType text/javascript A432000
-  ExpiresByType application/javascript A432000
-  ExpiresByType application/x-javascript A432000
+  ExpiresByType font/ttf A31536000 
+  ExpiresByType font/woff A31536000 
+  ExpiresByType font/eot A31536000 
+  ExpiresByType font/woff2 A31536000 
+  ExpiresByType image/svg+xml A31536000 
+  ExpiresByType image/webp A31536000 
+  ExpiresByType image/png A31536000 
+  ExpiresByType text/css A31536000 
+  ExpiresByType text/javascript A31536000 
+  ExpiresByType application/javascript A31536000 
+  ExpiresByType application/x-javascript A31536000 
 
 </IfModule>
 
