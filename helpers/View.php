@@ -35,7 +35,7 @@ class View
 	{
 
 		if (!is_dir('views/' . $controller) || !is_file('views/' . $controller . '/' . $action . '.php')) {
-			Utils::redirection('error/error500');
+			Utils::redirection('error/500');
 		}
 
 		self::$currentView['controller'] = $controller;

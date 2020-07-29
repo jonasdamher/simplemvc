@@ -8,7 +8,10 @@ declare(strict_types=1);
  */
 class Head
 {
+
 	private static string $title = '';
+	private static string $canonical = '';
+	private static string $robots = 'index,all';
 	private static string $description = 'Example page, using PHP with MVC architecture';
 	private static string $keyWords = 'HTML, CSS, JavaScript';
 
@@ -29,6 +32,38 @@ class Head
 	public static function getTitle(): string
 	{
 		return self::$title;
+	}
+
+	/**
+	 * Establecer url canónica de página web.
+	 */
+	public static function caconical(string $url)
+	{
+		self::$canonical = $url;
+	}
+
+	/**
+	 * Devuelve url canónica de página web.
+	 */
+	public static function getCaconical(): string
+	{
+		return self::$canonical;
+	}
+
+	/**
+	 * Establecer robots de página web.
+	 */
+	public static function robots(string $robots)
+	{
+		self::$robots = $robots;
+	}
+
+	/**
+	 * Devuelve parámetros de robots de página web.
+	 */
+	public static function getRobots(): string
+	{
+		return self::$robots;
 	}
 
 	/**
@@ -54,6 +89,7 @@ class Head
 	{
 		self::$keyWords = $keywords;
 	}
+
 	/**
 	 * Devuelve un array con todas las keywords de la página web.
 	 */
@@ -65,9 +101,13 @@ class Head
 	/**
 	 * Añadir un nuevo archivo CSS al head de la página web.
 	 */
-	public static function css(string $fileName)
+	public static function css($fileName)
 	{
-		array_push(self::$linksCss, $fileName);
+		if (is_array($fileName)) {
+			self::$linksCss = array_merge(self::$linksCss, $fileName);
+		} else {
+			array_push(self::$linksCss, $fileName);
+		}
 	}
 
 	/**
@@ -81,10 +121,15 @@ class Head
 	/**
 	 * Añadir un nuevo archivo JavaScript al head de la página web.
 	 */
-	public static function js(string $fileName)
+	public static function js($fileName)
 	{
-		array_push(self::$linksJs, $fileName);
+		if (is_array($fileName)) {
+			self::$linksJs = array_merge(self::$linksJs, $fileName);
+		} else {
+			array_push(self::$linksJs, $fileName);
+		}
 	}
+
 	/**
 	 * Devuelve un array con todos los archivos JavaScript del head.
 	 */
