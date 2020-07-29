@@ -5,7 +5,7 @@
 	<div class="row j-center">
 		<div class="card card-form bg-light shadow-md">
 			<div class="card-body">
-				<form class="form" action="<?= URL_BASE ?>articles/create" method="post">
+				<div class="form">
 					<div class="form-input">
 						<label class="label" for="title">Title</label>
 						<input type="text" name="title" id="title" class="input" required />
@@ -30,9 +30,8 @@
 							} ?>
 						</select>
 					</div>
-
-					<button type="submit" class="btn btn-orange shadow-sm">Create</button>
-				</form>
+					<button type="button" id="btn-create-article" class="btn btn-primary shadow-sm">Create</button>
+				</div>
 			</div>
 		</div>
 	</div>
