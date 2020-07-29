@@ -7,6 +7,10 @@ declare(strict_types=1);
  */
 class ErrorController extends BaseController
 {
+    public function error401()
+    {
+        $this->error('Error 401. No tienes permiso para acceder.', '401');
+    }
 
     public function error404()
     {
