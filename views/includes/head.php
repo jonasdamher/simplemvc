@@ -5,6 +5,8 @@
     <title><?= Head::getTitle() ?>simplymvcphp</title>
     <meta name="description" content="<?= Head::getDescription() ?>" />
     <meta name="keywords" content="<?= Head::getKeyWords() ?>" />
+    <meta name="canonical" content="<?= URL_BASE . View::controller() . Head::getCaconical() ?>" />
+    <meta name="robots" content="<?= Head::getRobots() ?>" />
     <meta name="author" content="jonasdamher" />
     <meta name="copyright" content="jonasdamher" />
     <meta charset="UTF-8" />
@@ -22,7 +24,6 @@
     } ?>
     <!-- SCRIPTS JS -->
     <script src="<?= URL_BASE ?>public/js/jquery-3.5.1.min.js"></script>
-    <script src="<?= URL_BASE ?>public/js/ckeditor/ckeditor.js"></script>
     <?php
     $totalLinksJs = count(Head::getLinksJs());
     if ($totalLinksJs > 0) {

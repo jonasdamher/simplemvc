@@ -1,3 +1,4 @@
+<?php include 'views/includes/navbar.php'; ?>
 <div class="container">
 	<div class="row">
 		<h1 class="h1">Articles</h1>
