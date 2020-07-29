@@ -14,7 +14,7 @@ class Auth
 			case 'ROLE_ADMIN':
 
 				if (!isset($_SESSION['userId']) || $_SESSION['userIdRol'] != 1 || $_SESSION['userRolIdentity'] != 'ROLE_ADMIN') {
-					Utils::redirection('home');
+					Utils::redirection('error/401');
 				}
 
 				break;

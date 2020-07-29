@@ -16,8 +16,11 @@ $action = strtolower(trim($_GET['action'] ?? 'index'));
 $api = $_GET['api'] ?? null;
 
 if (!is_null($api) && $api == 'api') {
-
     $action = 'api' . ucfirst($action);
+}
+
+if ($controller == 'error') {
+    $action = 'error' . $action;
 }
 
 /**
@@ -27,11 +30,11 @@ if (!is_null($api) && $api == 'api') {
 $className = $controller . 'Controller';
 
 if (!file_exists('controllers/' . $className . '.php')) {
-    Utils::redirection('error/error500');
+    Utils::redirection('error/500');
 }
 
 if (!class_exists($className)) {
-    Utils::redirection('error/error404');
+    Utils::redirection('error/404');
 }
 
 $controller = new $className();
@@ -41,7 +44,7 @@ $controller = new $className();
  * utiliza el método si es correcto.
  */
 if (!method_exists($controller, $action)) {
-    Utils::redirection('error/error404');
+    Utils::redirection('error/404');
 }
 
 $controller->$action();
