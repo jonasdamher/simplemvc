@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: Montserrat, roboto, sans-serif;
   font-size: 16px;
   color: #222;
   background-color: #fff;
@@ -24,11 +24,12 @@ body {
 }
 
 .navbar {
-  background-color: transparent;
+  background-color: #fff;
+  box-shadow: 0px 1px 2px #22222259;
 }
 
 .navbar-body {
-  padding: 1rem 2rem;
+  padding: 0.6rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,7 +59,8 @@ body {
 .navbar-menu li a,
 .navbar-menu li .btn-dropdown {
   text-decoration: none;
-  color: #222;
+  font-weight: bold;
+  color: #636363;
 }
 
 .navbar-menu .active a,
@@ -101,21 +103,22 @@ body {
   color: rgb(65, 65, 65);
 }
 
-.btn-dropdown::after {
-  content: "▼";
-}
-
 .navbar-menu li .btn-dropdown.active {
-  color: #fff;
+  color: #0540ff;
 }
 
 .btn {
-  padding: 0.6rem 0.8rem;
+  padding: 0.6rem 1.8rem;
   cursor: pointer;
   text-decoration: none;
+  border-radius: 20px;
   border: 0;
   outline: 0;
   background-color: transparent;
+}
+
+.btn-square {
+  padding: 0.6rem;
 }
 
 .btn-primary {
@@ -182,11 +185,19 @@ body {
 
 .input {
   padding: 0.6rem;
-  border: 1px solid rgba(34, 34, 34, 0.096);
+  border: 1px solid #22222218;
   outline: 0;
+  border-radius: 0.2rem;
 }
 
-.input:focus{
+#cke_editor {
+  border: 1px solid #22222218;
+  outline: 0;
+  border-radius: 0.2rem;
+}
+
+.input:focus,
+#cke_editor:focus {
   border: 1px solid #2222224a;
 }
 
@@ -220,9 +231,8 @@ body {
 }
 
 .logo {
-  width: 100%;
-  max-width: 52px;
-  height: auto;
+  width: 42px;
+  height: 42px;
 }
 
 .f-column {
@@ -315,6 +325,10 @@ th {
   display: flex;
 }
 
+.f-wrap {
+  flex-wrap: wrap;
+}
+
 .d-none {
   display: none;
 }
@@ -327,7 +341,12 @@ th {
   padding-bottom: 1rem;
 }
 
-.m-0 {
+.pl-1 {
+  padding-left: 1rem;
+}
+
+.m-0,
+li.m-0 {
   margin: 0;
 }
 
@@ -337,6 +356,10 @@ th {
 
 .mb-1 {
   margin-bottom: 1rem;
+}
+
+.w-100 {
+  width: 100%;
 }
 
 .border-bottom {
@@ -355,4 +378,33 @@ th {
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
+}
+
+.badge {
+  min-width: 100px;
+  margin: 0rem 0.3rem 1rem 0rem;
+  padding: 0.3rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.badge .btn {
+  padding: 0.3rem;
+  margin-left: 1.2rem;
+}
+
+.badge-secondary {
+  background: #e0e0e0;
+}
+
+.badge-secondary .btn:hover,
+.badge-secondary .btn:focus {
+  color: #6b6b6b;
+  transition: 0.3s;
+  -o-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -webkit-transition: 0.3s;
 }
