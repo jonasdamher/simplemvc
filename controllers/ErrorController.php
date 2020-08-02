@@ -9,17 +9,17 @@ class ErrorController extends BaseController
 {
     public function error401()
     {
-        $this->error('Error 401. No tienes permiso para acceder.', '401');
+        $this->error('Error 401. Dont permission to access.', '401');
     }
 
     public function error404()
     {
-        $this->error('Error 404. No encontrado.', '404');
+        $this->error('Error 404. Dont found.', '404');
     }
 
     public function error500()
     {
-        $this->error('Error 500. Error interno.', '500');
+        $this->error('Error 500. Internal error.', '500');
     }
 
     private function error(string $message, string $errorHttp)
