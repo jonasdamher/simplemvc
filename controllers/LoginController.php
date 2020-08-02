@@ -18,16 +18,24 @@ class LoginController extends BaseController
 
         if ($this->submitForm()) {
 
-            $this->model('users')->setEmail($_POST['email']);
-            $this->model('users')->setPassword($_POST['password']);
+            $this->model('users')->setEmail('email');
+            $this->model('users')->setPassword('password');
 
-            $login = $this->model('users')->login();
+            $valid = !$this->model('users')->isValidForm();
 
-            if (!$login['success']) {
-                $this->setResponseModel($login['message']);
+            if ($valid['success']) {
+                $this->setResponseModel($valid['message']);
+            } else {
+
+                $login = $this->model('users')->login();
+
+                if (!$login['success']) {
+                    $this->setResponseModel($login['message']);
+                }
             }
         }
 
+        Head::title('Login');
         include View::show('users', 'login');
     }
 }
