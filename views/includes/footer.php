@@ -1,7 +1,7 @@
 <footer class="footer">
-	<div class="footer-body">
-	<?php include 'views/includes/footer/'.Footer::get().'.php'; ?>
-	</div>
+	<section class="footer-body">
+		<?php include 'views/includes/footer/' . Footer::get() . '.php'; ?>
+	</section>
 </footer>
 <!-- SCRIPTS JS -->
 <script src="<?= URL_BASE ?>/public/js/dom.js" defer></script>
