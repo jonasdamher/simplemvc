@@ -1,3 +1,5 @@
+"use strict";
+
 function post(route, formData) {
   const form = JSON.stringify({ form: formData });
 
