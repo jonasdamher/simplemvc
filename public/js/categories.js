@@ -1,3 +1,5 @@
+"use strict";
+
 $(function () {
   // OPEN MODAL - NEW
   $(".btn-modal-new").on("click", function () {
