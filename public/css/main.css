@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat-Regular'), url(../font/Montserrat/Montserrat-Regular.ttf) format('ttf');
+  font-display: swap;
+}
+
 body {
   font-family: Montserrat, roboto, sans-serif;
   font-size: 16px;
@@ -119,6 +127,14 @@ body {
 
 .btn-square {
   padding: 0.6rem;
+}
+
+.btn-secondary {
+  color: #636363;
+}
+.btn-secondary:focus,
+.btn-secondary:focus {
+  color: #222;
 }
 
 .btn-primary {
@@ -372,6 +388,7 @@ li.m-0 {
   position: fixed;
   right: 1rem;
   bottom: 1rem;
+  border-radius: .25rem;
 }
 
 .snackbar-body {
@@ -424,8 +441,6 @@ li.m-0 {
   }
   to {
     width: 0;
-    padding: 0;
-    border: 0;
   }
 }
 
@@ -443,4 +458,7 @@ li.m-0 {
 
 .search-hide {
   animation-name: hide-search;
+  padding-left: 0;
+  padding-right: 0;
+  border: 0;
 }
