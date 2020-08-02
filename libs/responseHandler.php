@@ -5,7 +5,7 @@ declare(strict_types=1);
 class responseHandler
 {
 
-	private array $response = [];
+	private array $response = ['success' => true, 'message' => ''];
 
 	/**
 	 * Para añadir los resultados y/o un mensaje de 
