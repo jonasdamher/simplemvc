@@ -43,7 +43,7 @@ class UsersModel extends BaseModel
 
 	public function setEmail($email)
 	{
-		$this->email = $email;
+		$this->email = $this->postData($email)->type('email')->strict()->require()->sanitize()->validate();
 	}
 
 	public function getEmail()
@@ -53,7 +53,7 @@ class UsersModel extends BaseModel
 
 	public function setPassword($password)
 	{
-		$this->password = $password;
+		$this->password = $this->postData($password)->type('string')->strict()->require()->sanitize()->validate();
 	}
 
 	public function getPassword()
