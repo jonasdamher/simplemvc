@@ -8,24 +8,37 @@ class Validator extends responseHandler
 	private $data = null;
 
 	private ?string $type = null;
+	private bool $strict = false;
 	private bool $require = false;
 	private bool $sanitize = false;
 
 	public function postData(string $postParameter)
 	{
-		$this->data = $_POST[$postParameter] ?? null;
+		$this->data = trim($_POST[$postParameter]) ?? null;
 		return $this;
 	}
 
 	public function getData(string $getParameter)
 	{
-		$this->data = $_GET[$getParameter] ?? null;
+		$this->data = trim($_GET[$getParameter]) ?? null;
+		return $this;
+	}
+
+	public function data($data)
+	{
+		$this->data = trim($data) ?? null;
 		return $this;
 	}
 
 	public function require()
 	{
 		$this->require = true;
+		return $this;
+	}
+
+	public function strict()
+	{
+		$this->strict = true;
 		return $this;
 	}
 
@@ -43,7 +56,7 @@ class Validator extends responseHandler
 
 	private function useRequire($data)
 	{
-		if ($data == null || count($data) == 0 || empty($data)) {
+		if ($data == null || empty($data) || (is_array($data) && count($data) == 0)) {
 			$this->fail('Data is required, is empty.');
 		}
 	}
@@ -76,19 +89,19 @@ class Validator extends responseHandler
 
 		switch ($this->type) {
 			case 'string';
-				$data = $data == '' ? null : $data;
+				$data = ((empty($data)) ? ($this->strict ? '' : null) : $data);
 				break;
 			case 'int';
-				$data = filter_var($data, FILTER_VALIDATE_INT);
+				$data = (!filter_var($data, FILTER_VALIDATE_INT)) ? (($this->strict ? 0 : null)) : $data;
 				break;
 			case 'float';
-				$data = filter_var($data, FILTER_VALIDATE_FLOAT);
+				$data = (!filter_var($data, FILTER_VALIDATE_FLOAT)) ? (($this->strict ? 0 : null)) :  $data;
 				break;
 			case 'email';
-				$data = filter_var($data, FILTER_VALIDATE_EMAIL);
+				$data = (!filter_var($data, FILTER_VALIDATE_EMAIL)) ? (($this->strict ? '' : null)) : $data;
 				break;
 			case 'url';
-				$data = filter_var($data, FILTER_VALIDATE_URL);
+				$data = (!filter_var($data, FILTER_VALIDATE_URL)) ? (($this->strict ? '' : null)) : $data;
 				break;
 		}
 
@@ -97,5 +110,17 @@ class Validator extends responseHandler
 		}
 
 		return $data;
+	}
+
+	/**
+	 * Devuelve un array asociativo para saber si la validación fue con exito.
+	 * 
+	 * @return array Devuelve las claves asociativas:
+	 * - success (bool)
+	 * - message (string)
+	 */
+	public function isValidForm()
+	{
+		return $this->response();
 	}
 }
