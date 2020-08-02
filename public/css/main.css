@@ -408,3 +408,39 @@ li.m-0 {
   -moz-transition: 0.3s;
   -webkit-transition: 0.3s;
 }
+
+@keyframes show-search {
+  from {
+    width: 0;
+  }
+  to {
+    width: 190px;
+  }
+}
+
+@keyframes hide-search {
+  from {
+    width: 190px;
+  }
+  to {
+    width: 0;
+    padding: 0;
+    border: 0;
+  }
+}
+
+#search {
+  transition: 0.3s;
+  -o-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -webkit-transition: 0.3s;
+  animation-duration: 0.3s;
+}
+
+.search-show {
+  animation-name: show-search;
+}
+
+.search-hide {
+  animation-name: hide-search;
+}
