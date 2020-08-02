@@ -1,9 +1,9 @@
 <?php include 'views/includes/navbar.php'; ?>
-<div class="container">
+<section class="container">
 	<div class="row">
 		<h1 class="h1">Articles</h1>
 	</div>
-	<div class="row">
+	<section class="row">
 		<?php
 		if($articles['success']){
 		foreach ($articles['result'] as $article) { ?>
@@ -16,5 +16,5 @@
 		}else { ?>
 			<p><?= $this->getResponseModel() ?></p>
 		<?php } ?>
-	</div>
-</div>
+	</section>
+</section>

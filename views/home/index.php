@@ -1,10 +1,10 @@
 <?php include 'views/includes/navbar.php'; ?>
-<div class="container">
-	<div class="row">
-		<div class="card">
+<section class="container">
+	<section class="row">
+		<article class="card">
 			<div class="card-body">
 				<p>Example</p>
 			</div>
-		</div>
-	</div>
-</div>
+		</article>
+	</section>
+</section>

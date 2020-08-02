@@ -1,23 +1,23 @@
-<div class="container">
+<section class="container">
 	<div class="row j-center">
 		<h1 class="h1">Login</h1>
 	</div>
-	<div class="row j-center">
+	<section class="row j-center">
 		<div class="card bg-light shadow-md">
 			<div class="card-body">
 				<form class="form" action="<?= URL_BASE ?>login" method="post">
 					<div class="form-input">
 						<label class="label" for="email">Email</label>
-						<input type="email" name="email" id="email" class="input" value="<?= Utils::postValue('email') ?>" required />
+						<input type="email" name="email" id="email" class="input" value="<?= Utils::postValue('email') ?>" autocomplete="email" required />
 					</div>
 					<div class="form-input">
 						<label class="label" for="password">Password</label>
-						<input type="password" name="password" id="password" class="input" value="<?= Utils::postValue('password') ?>" required />
+						<input type="password" name="password" id="password" class="input" value="<?= Utils::postValue('password') ?>" autocomplete="off" required />
 					</div>
 					<button type="submit" class="btn btn-primary shadow-sm">Access</button>
 				</form>
 			</div>
 		</div>
-	</div>
+	</section>
 	<?php include 'views/includes/snackbar.php'; ?>
-</div>
+</section>

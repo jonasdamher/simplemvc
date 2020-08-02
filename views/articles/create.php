@@ -1,9 +1,9 @@
 <?php include 'views/includes/navbar.php'; ?>
-<div class="container">
+<section class="container">
 	<div class="row j-center">
 		<h1 class="h1">Article</h1>
 	</div>
-	<div class="row j-center">
+	<section class="row j-center">
 		<div class="card card-form bg-light shadow-md">
 			<div class="card-body">
 				<div class="form">
@@ -40,8 +40,8 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 	<div class="row j-center">
 		<p class="text-danger p"><?= $this->getResponseModel() ?></p>
 	</div>
-</div>
+</section>
