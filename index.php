@@ -1,6 +1,6 @@
 <?php
 /**
- * Blog montado en PHP con arquitectura MVC
+ * Blog montado en PHP con arquitectura MVC.
  * 
  * @package simplemvc
  * @version 1.0
@@ -27,6 +27,9 @@ require_once 'libs/JsonRequest.php';
 
 // Clases principales de la webapp
 require_once 'core/Database.php';
+
+require_once 'libs/responseHandler.php';
+require_once 'libs/Validator.php';
 require_once 'core/BaseModel.php';
 require_once 'core/BaseController.php';
 
