@@ -29,20 +29,25 @@ ServerSignature Off
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
 
+  # Redireccionar de HTTP a HTTPS
+  RewriteCond %{SERVER_PORT} 80
+  RewriteRule ^(.*)$ https:/www.jonasdamher.dev/$1 [R,L]
+
   # Errores HTTP
 
-  ErrorDocument 404 /simplymvcphp/index.php?controller=error&action=404
-  ErrorDocument 500 /simplymvcphp/index.php?controller=error&action=500
-  ErrorDocument 401 /simplymvcphp/index.php?controller=error&action=401
+  ErrorDocument 404 index.php?controller=error&action=404
+  ErrorDocument 500 index.php?controller=error&action=500
+  ErrorDocument 401 index.php?controller=error&action=401
+  ErrorDocument 403 index.php?controller=error&action=403
 
   # Urls amigables API
 
-  RewriteRule ^api/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([0-9]+)$ index.php?api=api&controller=$1&action=$2&id=$3 [L]
+  RewriteRule ^api/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?api=api&controller=$1&action=$2&id=$3 [L]
   RewriteRule ^api/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?api=api&controller=$1&action=$2 [L]
 
   # Urls amigables
 
-  RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([0-9]+)$ index.php?controller=$1&action=$2&id=$3 [L]
+  RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?controller=$1&action=$2&id=$3 [L]
   RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?controller=$1&action=$2 [L,QSA]
   RewriteRule ^([a-zA-Z0-9]+)$ index.php?controller=$1 [L,QSA]
  

@@ -10,6 +10,7 @@ class Footer
 
 	private static string $footer = 'default';
 	private static array $linksJs = [];
+
 	/**
 	 * Añadir un nuevo pie de página.
 	 */
@@ -27,9 +28,13 @@ class Footer
 	/**
 	 * Añadir un nuevo archivo JavaScript al footer de la página web.
 	 */
-	public static function js(string $fileName)
+	public static function js($fileName)
 	{
-		array_push(self::$linksJs, $fileName);
+		if (is_array($fileName)) {
+			self::$linksJs = array_merge(self::$linksJs, $fileName);
+		} else {
+			array_push(self::$linksJs, $fileName);
+		}
 	}
 	/**
 	 * Devuelve un array con todos los archivos JavaScript del footer.

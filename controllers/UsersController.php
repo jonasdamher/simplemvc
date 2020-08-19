@@ -19,8 +19,8 @@ class UsersController extends BaseController
         $this->model('users')->setId($_SESSION['userId']);
         $user = $this->model('users')->get();
 
-        Head::title('profile');
-        include View::show('users', 'profile');
+        Head::title('profile '.$_SESSION['userName']);
+        include View::render('users', 'profile');
     }
 
     public function logout()

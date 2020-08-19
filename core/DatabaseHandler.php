@@ -7,20 +7,31 @@ declare(strict_types=1);
  */
 class DatabaseHandler
 {
-	protected static array $credentials = [];
+
+	private static array $credentials = [
+		'blog' => [
+			'driver' => 'mysql',
+			'dns' => 'localhost',
+			'port' => 3008,
+			'databaseName' => 'simplymvcphp',
+			'charset' => 'utf8mb4',
+			'userName' => 'root',
+			'password' => ''
+		],
+		'helpdesk' => [
+			'driver' => 'mysql',
+			'dns' => 'localhost',
+			'port' => 3008,
+			'databaseName' => 'helpdeskdb',
+			'charset' => 'utf8mb4',
+			'userName' => 'root',
+			'password' => ''
+		]
+	];
+
 	protected static array $connections = [];
 
-	protected static bool $initialize = false;
-	
-	protected static string $dbByDefault = 'default';
-
-	/**
-	 * Añadir credenciales para conexión a la base de datos.
-	 */
-	protected static function credentials()
-	{
-		self::$credentials = require_once 'conf/credentials.php';
-	}
+	protected static string $dbByDefault = 'blog';
 
 	/**
 	 * Iniciar la conexión a la base de datos.

@@ -10,18 +10,13 @@ require_once 'core/DatabaseHandler.php';
 class Database extends DatabaseHandler
 {
     /**
-     * Conectar a la DB.~
+     * Conectar a la DB.
      * @param string $db nombre de base de datos.
      * @return object Conexión PDO a la base de datos.
      */
     public static function connect($db = null): object
     {
-        $db = $db ?? parent::$dbByDefault;
-
-        if (!parent::$initialize) {
-            parent::$initialize = true;
-            parent::credentials();
-        }
+        $db = is_null($db) ? parent::$dbByDefault : $db;
 
         if (!key_exists($db, parent::$connections) || is_null(parent::$connections[$db])) {
             parent::$connections[$db] = parent::connectionTo($db);
@@ -36,7 +31,7 @@ class Database extends DatabaseHandler
      */
     public static function disconnect($db = null)
     {
-        $db = $db ?? parent::$dbByDefault;
+        $db = is_null($db) ? parent::$dbByDefault : $db;
 
         parent::$connections[$db] = null;
     }

@@ -28,10 +28,11 @@ class View
 	{
 		return self::$currentView['action'];
 	}
+
 	/**
-	 * Permite devolver una vista.
+	 * Permite mostrar una vista.
 	 */
-	public static function show(string $controller, string $action = 'index'): string
+	public static function render(string $controller, string $action = 'index'): string
 	{
 
 		if (!is_dir('views/' . $controller) || !is_file('views/' . $controller . '/' . $action . '.php')) {

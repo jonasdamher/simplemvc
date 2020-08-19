@@ -2,11 +2,12 @@
 
 const editor = CKEDITOR.replace("editor");
 
-class Article {
+class Article extends validator {
   #title = "";
   #description = "";
   #main = "";
   #category = 0;
+  #image = null;
   #tags = [];
 
   setData() {
@@ -14,10 +15,11 @@ class Article {
     this.#description = $("#description").val().trim();
     this.#main = editor.getData();
     this.#category = parseInt($("#idCategory").val().trim() | 0);
+    this.#image = $("#mainImage")[0].files[0];
 
     let tags = [];
     $("#tags-list")
-      .find("span")
+      .find("div.badge")
       .each(function () {
         tags.push($(this).text().trim());
       });
@@ -30,59 +32,57 @@ class Article {
       description: this.#description,
       main: this.#main,
       category: this.#category,
-      tags: this.#tags
+      tags: this.#tags,
+      image: this.#image
     };
   }
 
-  #validate() {
-    let validate = {
-      isValid: true,
-      messages: []
-    };
-
-    if (this.#title.length == 0) {
-      validate.isValid = false;
-      validate.messages.push("required title");
+  #validateCreate() {
+    if (this.empty(this.#title)) {
+      this.validate.isValid = false;
+      this.validate.messages.push("required title.");
     }
 
-    if (this.#description.length == 0) {
-      validate.isValid = false;
-      validate.messages.push("required description");
+    if (this.empty(this.#description)) {
+      this.validate.isValid = false;
+      this.validate.messages.push("required description.");
     }
 
-    if (this.#main.length == 0) {
-      validate.isValid = false;
-      validate.messages.push("required main");
+    if (this.empty(this.#main)) {
+      this.validate.isValid = false;
+      this.validate.messages.push("required main.");
     }
 
     if (
-      this.#category.length == 0 ||
-      this.#category == 0 ||
+      this.equalLength(this.#category, 0) ||
+      this.compare(this.#category, 0) ||
       !Number.isInteger(this.#category)
     ) {
-      validate.isValid = false;
-      validate.messages.push("required category seleted");
+      this.validate.isValid = false;
+      this.validate.messages.push("required category seleted.");
     }
 
-    if (this.#tags.length >= 10) {
-      validate.isValid = false;
-      validate.messages.push("tags max 10");
+    if (this.maxLength(this.#tags, 10)) {
+      this.validate.isValid = false;
+      this.validate.messages.push("tags max 10.");
     }
 
-    return validate;
+    return this.validate;
   }
 
-  request() {
-    const validate = this.#validate();
+  create() {
+    const validate = this.#validateCreate();
     console.log(validate);
+
     if (!validate.isValid) {
       return;
     }
 
-    // post("articles/create", this.#getData()).done(function (json) {
-    //   const data = JSON.parse(json);
-    //   console.log(data);
-    // });
+    this.post("articles/create", this.#getData()).done(function (json) {
+      console.log(json);
+      const data = JSON.parse(json);
+      console.log(data);
+    });
   }
 }
 
@@ -90,21 +90,61 @@ $(function () {
   $("#btn-create-article").click(function () {
     const article = new Article();
     article.setData();
-    article.request();
+    article.create();
   });
+
+  function addTag(tagName) {
+    let badge = `<div class="badge badge-secondary"><span>${tagName.trim()}</span><button type="button" class="btn" title="Remove tag"><i class="fa fa-times fa-sm"></i></button></div>`;
+    $("#tags-list").append(badge);
+  }
 
   $("#tags").keypress(function (e) {
     if (e.keyCode != 13) {
       return;
     }
-    let valueField = $(this).val().trim();
 
-    let badge = `<div class="badge badge-secondary"><span>${valueField}</span><button type="button" class="btn" title="Remove tag"><i class="fa fa-times fa-sm"></i></button></div>`;
-    $("#tags-list").append(badge);
+    let valueField = $(this).val();
+
+    if (valueField.search(",") != -1) {
+      let multipleTag = valueField.split(",");
+
+      multipleTag.forEach(tagName => {
+        addTag(tagName);
+      });
+    } else {
+      addTag(valueField);
+    }
+
     $(this).val("");
   });
 
   $("#tags-list").on("click", "button.btn", function () {
-    $(this).parent().remove();
+    let tag = $(this);
+
+    tag.parent().fadeOut(200, function () {
+      tag.parent().remove();
+    });
+  });
+
+  $("#description").on("keypress", function () {
+    let input = $(this);
+
+    let count = input.siblings(".count-input-text").children("span.count");
+
+    count.text(input.val().length);
+
+    if (input.val().length > input.attr("maxlength")) {
+      if (count.hasClass("text-danger")) {
+        count.addClass("text-danger");
+      } else {
+        count.removeClass("text-danger");
+      }
+    }
+  });
+
+  $("#mainImage").change(function () {
+    let image = $("#mainImage")[0].files[0];
+
+    console.log(image);
   });
 });

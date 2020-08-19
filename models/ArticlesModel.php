@@ -107,6 +107,21 @@ class ArticlesModel extends BaseModel
 	}
 
 	/**
+	 * Buscar artículo por urlName
+	 */
+	public function getArticleByUrlName(): array
+	{
+		$sql = "SELECT main.id,
+		main.title, main.description, main.main, main.idUser, main.idCategory, main.urlName, main.createAt, main.updateAt,
+		category.name as categoryName, user.name as user
+		FROM $this->table as main
+		inner join art_categories as category on main.idCategory=category.id
+		inner join users as user on main.idUser=user.id";
+
+		return $this->findSqlByName($sql, 'urlName', $this->getId());
+	}
+
+	/**
 	 * Coger todos los artículos que existen
 	 */
 	public function getAll(): array
@@ -121,7 +136,10 @@ class ArticlesModel extends BaseModel
 	{
 		try {
 
-			$consult = Database::connect()->prepare("INSERT INTO $this->table title, description, main, idUser, idCategory, urlName VALUES :title, :description, :main, :idUser, :idCategory, :urlName");
+			$consult = Database::connect()->prepare("INSERT INTO $this->table 
+			(title, description, main, idUser , idCategory , urlName)
+			VALUES 
+			(:title, :description, :main, :idUser, :idCategory, :urlName)");
 
 			$consult->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
 			$consult->bindValue(':description', $this->getDescription(), PDO::PARAM_STR);

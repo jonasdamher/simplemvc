@@ -13,10 +13,16 @@
 					</div>
 					<div class="form-input">
 						<label class="label" for="description">Description</label>
-						<input type="text" name="description" id="description" class="input" />
+						<textarea name="description" id="description" class="input" maxlength="160" rows="2"></textarea>
+						<div class="count-input-text"><span class="count">0</span>/160</div>
 					</div>
 					<div class="form-input">
-						<textarea name="editor textarea" id="editor" rows="10" col="80">
+						<label class="label" for="mainImage">Main image</label>
+						<input type="file" name="mainImage" id="mainImage" class="input" />
+					</div>
+					<div class="form-input">
+						<label class="label" for="editor">Main</label>
+						<textarea name="editor textarea" id="editor" rows="10">
 						</textarea>
 					</div>
 					<div class="form-input">

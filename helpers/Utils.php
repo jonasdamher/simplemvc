@@ -16,6 +16,15 @@ class Utils
 	}
 
 	/**
+	 * Devuelve la fecha y hora actual.
+	 */
+	public static function currentDate()
+	{
+		$date = new DateTime();
+		return 	$date->format('Y-m-d H:i:s');
+	}
+
+	/**
 	 * Devuelve un valor de petición POST, uso para campos de formularios.
 	 */
 	public static function postValue(string $postFieldName): string

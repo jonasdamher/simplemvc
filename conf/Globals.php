@@ -7,6 +7,6 @@ declare(strict_types=1);
  */
 
 /**
- * URL absoluta raíz del proyecto.
+ * URL absoluta del proyecto.
  */
-define('URL_BASE', '//' . $_SERVER['SERVER_NAME'] . '/simplymvcphp/');
+define('URL_BASE', '//' . $_SERVER['SERVER_NAME'] . '/');

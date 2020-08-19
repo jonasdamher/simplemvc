@@ -59,7 +59,8 @@ class TagsModel extends BaseModel
 	{
 		try {
 
-			$consult = Database::connect()->prepare("INSERT INTO $this->table idArticle, name VALUES :idArticle, :name");
+			$consult = Database::connect()->prepare("INSERT INTO $this->table 
+			(idArticle, name) VALUES (:idArticle, :name)");
 
 			$consult->bindValue(':idArticle', $this->getIdArticle(), PDO::PARAM_INT);
 			$consult->bindValue(':name', $this->getName(), PDO::PARAM_STR);
@@ -79,4 +80,10 @@ class TagsModel extends BaseModel
 			return $this->response();
 		}
 	}
+
+	public function getAllByIdArticle(): array
+	{
+		return $this->findAllFieldsByName('name','idArticle',$this->getIdArticle());
+	}
+
 }

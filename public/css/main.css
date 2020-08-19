@@ -5,11 +5,12 @@
 }
 
 @font-face {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
-  font-weight: 400;
-  src: local('Montserrat-Regular'), url(../font/Montserrat/Montserrat-Regular.ttf) format('ttf');
   font-display: swap;
+  font-weight: 400;
+  src: local("Montserrat-Regular"),
+    url(../font/Montserrat/Montserrat-Regular.ttf) format("ttf");
 }
 
 body {
@@ -238,6 +239,7 @@ body {
 
 .form-input {
   padding-bottom: 1rem;
+  position: relative;
   display: flex;
   flex-direction: column;
 }
@@ -334,7 +336,7 @@ th {
 }
 
 .separator-left {
-  padding-left: 0.8rem;
+  padding-left: 0.6rem;
 }
 
 .d-flex {
@@ -388,7 +390,7 @@ li.m-0 {
   position: fixed;
   right: 1rem;
   bottom: 1rem;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 .snackbar-body {
@@ -461,4 +463,16 @@ li.m-0 {
   padding-left: 0;
   padding-right: 0;
   border: 0;
+}
+
+.card-text-lead {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.count-input-text {
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  font-size: 12px;
 }

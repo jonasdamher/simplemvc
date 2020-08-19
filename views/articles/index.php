@@ -9,7 +9,8 @@
 		foreach ($articles['result'] as $article) { ?>
 			<article class="card bg-light shadow-md">
 				<div class="card-body">
-					<p><?= $article['name'] ?></p>
+					<p class="card-text-lead"><a href="<?= URL_BASE.'articles/get/'.$article['urlName'] ?>"><?= $article['title'] ?></a></p>
+					<p><?= $article['description'] ?></p>
 				</div>
 			</article>
 		<?php } 

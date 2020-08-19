@@ -12,9 +12,14 @@ class ErrorController extends BaseController
         $this->error('Error 401. Dont permission to access.', '401');
     }
 
+    public function error403()
+    {
+        $this->error('Error 403. Sorry bro, article removed QWQ".', '404');
+    }
+
     public function error404()
     {
-        $this->error('Error 404. Dont found.', '404');
+        $this->error(`Error 404. Don't found.`, '404');
     }
 
     public function error500()
@@ -25,6 +30,6 @@ class ErrorController extends BaseController
     private function error(string $message, string $errorHttp)
     {
         Head::title('error ' . $errorHttp);
-        include View::show('error');
+        include View::render('error');
     }
 }

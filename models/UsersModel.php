@@ -1,7 +1,6 @@
 <?php
 
 declare(strict_types=1);
-
 /**
  * Modelo de usuario
  */
@@ -108,10 +107,10 @@ class UsersModel extends BaseModel
 		try {
 
 			$consult = Database::connect()->prepare("SELECT 
-			$this->table.id, $this->table.name, $this->table.email, $this->table.password, $this->table.idRol, 
+			user.id, user.name, user.email, user.password, user.idRol, 
 			usr_rol.rol, usr_rol.indentity
-			FROM $this->table 
-			INNER JOIN usr_rol ON $this->table.idRol = usr_rol.id
+			FROM $this->table as user
+			INNER JOIN usr_rol ON user.idRol = usr_rol.id
 			WHERE email = :email");
 
 			$consult->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
@@ -119,16 +118,17 @@ class UsersModel extends BaseModel
 			$consult->execute();
 
 			if ($consult->rowCount() == 0) {
-				throw new Exception('password or email does not match');
+				throw new Exception('password or email does not match.');
 			}
 
 			$result = $consult->fetch(PDO::FETCH_ASSOC);
 
 			if (!password_verify($this->getPassword(), $result['password'])) {
-				throw new Exception('password or email does not match');
+				throw new Exception('password or email does not match.');
 			}
 
 			$this->sessionInit($result);
+			$this->updateDateLastSession($result);
 		} catch (Exception $e) {
 
 			$this->fail($e->getMessage());
@@ -140,6 +140,24 @@ class UsersModel extends BaseModel
 			$consult = null;
 			Database::disconnect();
 			return $this->response();
+		}
+	}
+
+	private function updateDateLastSession($user)
+	{
+		try {
+			$consult = Database::connect()->prepare("UPDATE $this->table SET lastSession=:currentDate where id=:id");
+
+			$consult->bindValue(':currentDate', Utils::currentDate(), PDO::PARAM_STR);
+			$consult->bindValue(':id', $user['id'], PDO::PARAM_INT);
+			$consult->execute();
+		} catch (PDOException $e) {
+
+			$this->fail($e->getMessage());
+		} finally {
+
+			$consult = null;
+			Database::disconnect();
 		}
 	}
 

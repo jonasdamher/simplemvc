@@ -11,9 +11,9 @@ class Head
 
 	private static string $title = '';
 	private static string $canonical = '';
-	private static string $robots = 'index,all';
-	private static string $description = 'Example page, using PHP with MVC architecture';
-	private static string $keyWords = 'HTML, CSS, JavaScript';
+	private static string $robots = 'index, follow';
+	private static string $description = 'Blog sobre desarrollo web y CV de Jonás Damián.';
+	private static string $keyWords = 'Jonás Damián, jonasdamher, cv Jonás Damián, cv jonasdamher';
 
 	private static array $linksCss = [];
 	private static array $linksJs = [];
@@ -85,8 +85,28 @@ class Head
 	/**
 	 * Añadir keywords al head de la página web.
 	 */
-	public static function keyWords(string $keywords)
+	public static function keyWords($keywords, $referenceArray = null)
 	{
+		if (is_array($keywords)) {
+			if (count($keywords) > 0) {
+				$keys = [];
+
+				foreach ($keywords as $key) {
+					array_push($keys, ',' . $key[$referenceArray]);
+				}
+
+				$keys = implode('', $keys);
+
+				if (substr($keys, 0, 1) == ',') {
+					$keys = substr($keys, 1);
+				}
+
+				$keywords = $keys;
+			} else {
+				$keywords = '';
+			}
+		}
+
 		self::$keyWords = $keywords;
 	}
 

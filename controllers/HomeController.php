@@ -15,6 +15,6 @@ class HomeController extends BaseController
 
     public function index()
     {
-        include View::show('home');
+        include View::render('home');
     }
 }

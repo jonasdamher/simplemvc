@@ -36,6 +36,9 @@ class LoginController extends BaseController
         }
 
         Head::title('Login');
-        include View::show('users', 'login');
+        Head::description('Login the jonasdamher.');
+        Head::robots('noindex, nofollow');
+
+        include View::render('users', 'login');
     }
 }

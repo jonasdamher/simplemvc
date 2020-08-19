@@ -59,11 +59,15 @@ $(function () {
     if (btn.attr("data-toggle") == "close") {
       statusInputSearch();
     }
+
     btn.attr("data-toggle", "open");
+    // btn.attr("type", "submit");
   });
 
   $("#btn-quit-search").click(function () {
-    $("#btn-search").attr("data-toggle", "close");
+    let btnSearch = $("#btn-search");
+    btnSearch.attr("data-toggle", "close");
+    btnSearch.attr("type", "button");
     statusInputSearch();
   });
 

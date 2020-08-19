@@ -5,7 +5,6 @@
 </footer>
 <!-- SCRIPTS JS -->
 <script src="<?= URL_BASE ?>/public/js/dom.js" defer></script>
-<script src="<?= URL_BASE ?>/public/js/main.js" defer></script>
 <script src="<?= URL_BASE ?>/public/js/all.min.js" defer></script>
 <?php
 $totalLinksJs = count(Footer::getLinksJs());

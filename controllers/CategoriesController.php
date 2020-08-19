@@ -29,7 +29,7 @@ class CategoriesController extends BaseController
 
         $categories = $this->model('categories')->getAll();
 
-        include View::show('categories');
+        include View::render('categories');
     }
 
     /**
