@@ -41,6 +41,12 @@ function statusInputSearch() {
   }, 300);
 }
 
+function checkDataSearch(e) {
+  if ($("#search").val().trim() == "") {
+    e.preventDefault();
+  }
+}
+
 $(function () {
   $(".btn-dropdown").on("click", function () {
     let btn = $(this);
@@ -54,14 +60,25 @@ $(function () {
     }
   });
 
-  $("#btn-search").click(function () {
+  $("#search").keypress(function (e) {
+    if (e.which == 13) {
+      checkDataSearch(e);
+    }
+  });
+
+  $("#btn-search").click(function (e) {
     let btn = $(this);
+    checkDataSearch(e);
+    if (btn.attr("type") == "button") {
+      e.preventDefault();
+    }
+
     if (btn.attr("data-toggle") == "close") {
       statusInputSearch();
     }
 
     btn.attr("data-toggle", "open");
-    // btn.attr("type", "submit");
+    btn.attr("type", "submit");
   });
 
   $("#btn-quit-search").click(function () {
