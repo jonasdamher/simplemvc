@@ -1,3 +1,4 @@
+
 const CACHE_NAME = "cache-v1";
 
 const urlsToCache = [
@@ -6,7 +7,7 @@ const urlsToCache = [
   "public/css/main.css",
   "public/js/jquery-3.5.1.min.js",
   "public/js/all.min.js",
-  "public/js/main.js",
+  "public/js/dom.js",
   "public/js/service-worker.js",
   "public/offline.html"
 ];
