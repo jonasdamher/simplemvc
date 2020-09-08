@@ -6,7 +6,8 @@
 	<section class="row j-center">
 		<div class="card card-form bg-light shadow-md">
 			<div class="card-body">
-				<p></p>
+				<p><?= $search ?></p>
+				<?php include 'views/articles/cardsArticles.php'; ?>
 			</div>
 		</div>
 	</section>
