@@ -14,6 +14,7 @@
 						<label class="label" for="password">Password</label>
 						<input type="password" name="password" id="password" class="input" value="<?= Utils::postValue('password') ?>" autocomplete="off" required />
 					</div>
+					<input type="hidden" name="token" value="<?= $token ?>" autocomplete="off" required />
 					<button type="submit" class="btn btn-primary shadow-sm">Access</button>
 				</form>
 			</div>

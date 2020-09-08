@@ -24,5 +24,5 @@
 <section class="navbar-content">
 	<div class="text-shadow-sm"><?= $_SESSION['userName'] ?></div>
 	<span class="text-secondary separator-left">|</span>
-	<a class="btn btn-square text-shadow-sm" href="<?= URL_BASE ?>users/logout">Logout</a>
+	<a class="btn btn-square text-shadow-sm" href="<?= URL_BASE ?>users/logout?token=<?= $_SESSION['_token'] ?>">Logout</a>
 </section>

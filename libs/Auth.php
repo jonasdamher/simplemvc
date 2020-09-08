@@ -26,9 +26,12 @@ class Auth
 		}
 	}
 
+	/**
+	 * Verificar que existen las claves de sesión definidas al iniciar sesión
+	 */
 	private function checkSession()
 	{
-		$list = ['userId', 'userName', 'userRolName', 'userIdRol', 'userRolIdentity'];
+		$list = ['_token', 'userId', 'userName', 'userRolName', 'userIdRol', 'userRolIdentity'];
 		$countSession = count($_SESSION);
 		$ok = true;
 
@@ -46,6 +49,9 @@ class Auth
 		return $ok;
 	}
 
+	/**
+	 * Verifica que existen las variables de sesión necesarias y comprueba que el usuario existe
+	 */
 	private function verify()
 	{
 		$ok = false;
@@ -83,5 +89,19 @@ class Auth
 
 			return $ok;
 		}
+	}
+
+	/**
+	 * Devulve un token y lo guarda en una variable de sesión.
+	 */
+	public function _token()
+	{
+		$token = bin2hex(random_bytes(256));
+		$_SESSION['_token'] = $token;
+		return $token;
+	}
+
+	public function compareTokens($token){
+		return $_SESSION['_token']==$token;
 	}
 }

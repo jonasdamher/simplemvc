@@ -19,12 +19,16 @@ class UsersController extends BaseController
         $this->model('users')->setId($_SESSION['userId']);
         $user = $this->model('users')->get();
 
-        Head::title('profile '.$_SESSION['userName']);
+        Head::title('profile ' . $_SESSION['userName']);
         include View::render('users', 'profile');
     }
 
     public function logout()
     {
-        $this->model('users')->logout();
+        $token = $_GET['token'];
+
+        if ($token == $_SESSION['_token']) {
+            $this->model('users')->logout();
+        }
     }
 }

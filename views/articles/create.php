@@ -42,6 +42,7 @@
 						<input type="text" name="tags" id="tags" class="input" />
 					</div>
 					<div id="tags-list" class="d-flex f-wrap w-100"></div>
+					<input type="hidden" name="token" value="<?= $token ?>" autocomplete="off" required />
 					<button type="button" id="btn-create-article" class="btn btn-primary shadow-sm">Create</button>
 				</div>
 			</div>

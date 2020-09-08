@@ -15,15 +15,16 @@ class LoginController extends BaseController
 
     public function index()
     {
+        $token = $this->auth->_token();
 
-        if ($this->submitForm()) {
+        if ($this->submitForm() && $this->auth->compareTokens($token)) {
 
             $this->model('users')->setEmail('email');
             $this->model('users')->setPassword('password');
 
             $valid = !$this->model('users')->isValidForm();
-
-            if ($valid['success']) {
+            var_dump(  $valid);
+            if ($valid) {
                 $this->setResponseModel($valid['message']);
             } else {
 

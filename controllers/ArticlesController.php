@@ -76,6 +76,8 @@ class ArticlesController extends BaseController
 
     public function create()
     {
+        $token = $this->auth->_token();
+        
         $this->auth->role('ROLE_ADMIN');
 
         $categories = $this->model('categories')->getAll();
