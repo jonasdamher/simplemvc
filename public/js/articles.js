@@ -103,13 +103,19 @@ $(function () {
       return;
     }
 
-    let valueField = $(this).val();
+    let valueField = $(this).val().trim();
+
+    if (valueField == "") {
+      return;
+    }
 
     if (valueField.search(",") != -1) {
       let multipleTag = valueField.split(",");
 
       multipleTag.forEach(tagName => {
-        addTag(tagName);
+        if (tagName != "") {
+          addTag(tagName);
+        }
       });
     } else {
       addTag(valueField);
