@@ -15,7 +15,6 @@ class BaseModel extends Validator
 		$this->table = $table;
 	}
 
-
 	/**
 	 * Devuelve los campos especificados de todos los registros de una tabla.
 	 */
@@ -56,6 +55,69 @@ class BaseModel extends Validator
 		try {
 
 			$consult = Database::connect()->prepare("SELECT * FROM $this->table");
+			$consult->execute();
+
+			if ($consult->rowCount() == 0) {
+				throw new Exception("Don't exist ");
+			}
+
+			$result = $consult->fetchAll(PDO::FETCH_ASSOC);
+
+			$this->success($result);
+		} catch (Exception $e) {
+
+			$this->fail($e->getMessage());
+		} catch (PDOException $e) {
+
+			$this->fail($e->getMessage());
+		} finally {
+
+			$consult = null;
+			Database::disconnect();
+			return $this->response();
+		}
+	}
+
+	/**
+	 * Devuelve todos los campos de todos los registros de una tabla.
+	 */
+	protected function findWithSql($sql): array
+	{
+		try {
+
+			$consult = Database::connect()->prepare($sql);
+			$consult->execute();
+
+			if ($consult->rowCount() == 0) {
+				throw new Exception("Don't exist ");
+			}
+
+			$result = $consult->fetchAll(PDO::FETCH_ASSOC);
+
+			$this->success($result);
+		} catch (Exception $e) {
+
+			$this->fail($e->getMessage());
+		} catch (PDOException $e) {
+
+			$this->fail($e->getMessage());
+		} finally {
+
+			$consult = null;
+			Database::disconnect();
+			return $this->response();
+		}
+	}
+
+	/**
+	 * Devuelve una búsqueda básica de registros de una consulta sql.
+	 */
+	protected function basicSearch($sql,$q): array
+	{
+		try {
+
+			$consult = Database::connect()->prepare($sql);
+			$consult->bindValue(':q','%'.$q.'%',PDO::PARAM_STR);
 			$consult->execute();
 
 			if ($consult->rowCount() == 0) {
@@ -239,6 +301,26 @@ class BaseModel extends Validator
 			$consult = null;
 			Database::disconnect();
 			return $this->response();
+		}
+	}
+
+	protected function countAll(){
+		try {
+
+			$consult = Database::connect()->prepare("SELECT count(id) FROM $this->table");
+
+			$consult->execute();
+
+			$result = $consult->fetch(PDO::FETCH_COLUMN);
+
+		} catch (PDOException $e) {
+
+			$this->fail($e->getMessage());
+		} finally {
+
+			$consult = null;
+			Database::disconnect();
+			return $result;
 		}
 	}
 
