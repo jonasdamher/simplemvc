@@ -17,15 +17,6 @@ class DatabaseHandler
 			'charset' => 'utf8mb4',
 			'userName' => 'root',
 			'password' => ''
-		],
-		'helpdesk' => [
-			'driver' => 'mysql',
-			'dns' => 'localhost',
-			'port' => 3008,
-			'databaseName' => 'helpdeskdb',
-			'charset' => 'utf8mb4',
-			'userName' => 'root',
-			'password' => ''
 		]
 	];
 
