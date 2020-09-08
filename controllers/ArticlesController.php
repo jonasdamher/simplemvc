@@ -14,11 +14,16 @@ class ArticlesController extends BaseController
 
     public function index()
     {
-        $articles = $this->model('articles')->getAll();
+        $currentPage = $_GET['page'] ?? 1;
+        $limit = $_GET['limit'] ?? 3;
+
+        $articles = $this->model('articles')->getAll($currentPage, $limit);
 
         if (!$articles['success']) {
             $this->setResponseModel($articles['message'] . 'articles.');
         }
+
+        $pagination = $this->model('articles')->pagination($currentPage,$limit);
 
         include View::render('articles');
     }
@@ -57,8 +62,15 @@ class ArticlesController extends BaseController
 
     public function search()
     {
-        $id = $_GET['id'] ?? null;
+        $currentPage = $_GET['page'] ?? 1;
+        $limit = $_GET['limit'] ?? 3;
 
+        $search = trim($_GET['q']) ?? null;
+        $articles = $this->model('articles')->getAllInSearch($search,$currentPage, $limit);
+
+        if (!$articles['success']) {
+            $this->setResponseModel($articles['message'] . 'articles.');
+        }
         include View::render('articles', 'search');
     }
 
@@ -70,7 +82,7 @@ class ArticlesController extends BaseController
 
         // Vista
         Head::title('create article');
-        Footer::js(['request', 'validator','ckeditor/ckeditor', 'articles']);
+        Footer::js(['request', 'validator', 'ckeditor/ckeditor', 'articles']);
 
         include View::render('articles', 'create');
     }
