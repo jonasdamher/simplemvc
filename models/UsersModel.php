@@ -178,6 +178,8 @@ class UsersModel extends BaseModel
 	 */
 	private function sessionInit($userData)
 	{
+		$token = bin2hex(random_bytes(256));
+		$_SESSION['_token'] = $token;
 		$_SESSION['userId'] = $userData['id'];
 		$_SESSION['userName'] = $userData['name'];
 		$_SESSION['userRolName'] = $userData['rol'];
