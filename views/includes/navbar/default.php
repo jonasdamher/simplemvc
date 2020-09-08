@@ -8,13 +8,22 @@
 	</ul>
 </section>
 <section class="navbar-content">
-<form action="<?= URL_BASE ?>articles/search" method="get">
-	<ul class="navbar-menu m-0">
-		<li class="m-0">
-			<button type="button" id="btn-search" class="btn btn-secondary btn-square" title="Search" data-toggle="close"><i class="fas fa-search fa-lg"></i></button>
-			<input type="search" id="search" name="q" class="input d-none" placeholder="Search..." />
-			<button type="button" id="btn-quit-search" class="btn btn-secondary btn-square d-none" title="Search quit"><i class="fas fa-times fa-lg"></i></button>
-		</li>
-	</ul>
-</form>
+	<form action="<?= URL_BASE ?>articles/search" method="get">
+		<ul class="navbar-menu m-0">
+			<li class="m-0">
+				<label for="search" title="Search">
+					<button type="<?= (empty(Utils::getValue('q')) ? 'button' : 'submit') ?>" id="btn-search" class="btn btn-secondary btn-square" title="Search" data-toggle="close">
+						<i class="fas fa-search fa-lg"></i>
+					</button>
+				</label>
+				
+				<input type="search" id="search" name="q" class="input <?= (empty(Utils::getValue('q')) ? 'd-none' : '') ?>" placeholder="Search..." value="<?= (empty(Utils::getValue('q')) ? '' : Utils::getValue('q')) ?>" />
+
+				<button type="button" id="btn-quit-search" class="btn btn-secondary btn-square <?= (empty(Utils::getValue('q')) ? 'd-none' : '') ?>" title="Search quit">
+					<i class="fas fa-times fa-lg"></i>
+				</button>
+
+			</li>
+		</ul>
+	</form>
 </section>
