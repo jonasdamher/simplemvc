@@ -7,4 +7,4 @@ Allow: /categories/
 Disallow: /users/
 Disallow: /error/
 Disallow: /login/
-Sitemap: https://localhost/simplymvcphp/sitemap.xml
+Sitemap: https://jonasdamher.dev/sitemap.xml
