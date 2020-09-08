@@ -35,6 +35,17 @@ class Utils
 		return $_POST[$postFieldName];
 	}
 
+		/**
+	 * Devuelve un valor de petición GET, uso para campos de formularios.
+	 */
+	public static function getValue(string $postFieldName): string
+	{
+		if (!isset($_GET[$postFieldName])) {
+			return '';
+		}
+		return trim($_GET[$postFieldName]);
+	}
+
 	/**
 	 * Compara si el nombre del controlador actual es igual al parámetro pasado,
 	 * si es así, devuelve "active" si no devuelve " ".
