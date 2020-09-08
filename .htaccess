@@ -42,12 +42,12 @@ ServerSignature Off
 
   # Urls amigables API
 
-  RewriteRule ^api/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?api=api&controller=$1&action=$2&id=$3 [L]
+  RewriteRule ^api/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9-]+)$ index.php?api=api&controller=$1&action=$2&id=$3 [L]
   RewriteRule ^api/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?api=api&controller=$1&action=$2 [L]
 
   # Urls amigables
 
-  RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?controller=$1&action=$2&id=$3 [L]
+  RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9-]+)$ index.php?controller=$1&action=$2&id=$3 [L]
   RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?controller=$1&action=$2 [L,QSA]
   RewriteRule ^([a-zA-Z0-9]+)$ index.php?controller=$1 [L,QSA]
  
