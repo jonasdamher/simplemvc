@@ -63,7 +63,7 @@ class UsersModel extends BaseModel
 	// Fin gets y sets
 
 	/**
-	 * Buscar usuario por ID
+	 * Buscar usuario por ID.
 	 */
 	public function get(): array
 	{
@@ -71,7 +71,7 @@ class UsersModel extends BaseModel
 	}
 
 	/**
-	 * Crear cuenta de usuario
+	 * Crear cuenta de usuario.
 	 */
 	public function signup(): array
 	{
@@ -100,7 +100,7 @@ class UsersModel extends BaseModel
 	}
 
 	/**
-	 * Iniciar sesión con una cuenta de usuario
+	 * Iniciar sesión con una cuenta de usuario.
 	 */
 	public function login(): array
 	{
@@ -108,12 +108,13 @@ class UsersModel extends BaseModel
 
 			$consult = Database::connect()->prepare("SELECT 
 			user.id, user.name, user.email, user.password, user.idRol, 
-			usr_rol.rol, usr_rol.indentity
-			FROM $this->table as user
-			INNER JOIN usr_rol ON user.idRol = usr_rol.id
-			WHERE email = :email");
+			usr_rol.rol, usr_rol.indentity 
+			FROM $this->table as user 
+			INNER JOIN usr_rol ON user.idRol = usr_rol.id 
+			WHERE email = :email and user.disabled=:disabledUser");
 
 			$consult->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
+			$consult->bindValue(':disabledUser', 0, PDO::PARAM_INT);
 
 			$consult->execute();
 
