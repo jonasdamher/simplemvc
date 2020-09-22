@@ -12,11 +12,11 @@ class validator extends request {
   }
 
   minLength(data, min) {
-    return data.length >= min;
+    return data.length <= min;
   }
 
   maxLength(data, max) {
-    return data.length <= max;
+    return data.length >= max;
 	}
 	
 	equalLength(data, compare) {
@@ -26,4 +26,5 @@ class validator extends request {
   compare(data, compare) {
     return data == compare;
   }
+
 }
