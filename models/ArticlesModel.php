@@ -149,11 +149,10 @@ class ArticlesModel extends BaseModel
 		for ($key = 0; $key < $countPagination; $key++) {
 			// Añadir número de página
 			if ($currentPage > 1) {
-		
+
 				$pagination['pagination'][$key]['page'] = $copyPage;
-				++$copyPage;			
-				$pagination['pagination'][$key]['rel'] = $copyPage>$currentPage?'next':'prev';
-			
+				++$copyPage;
+				$pagination['pagination'][$key]['rel'] = $copyPage > $currentPage ? 'next' : 'prev';
 			} else if ($currentPage < $pages) {
 
 				$pagination['pagination'][$key]['page'] = ++$copyPage;
@@ -219,9 +218,9 @@ class ArticlesModel extends BaseModel
 		try {
 
 			$consult = Database::connect()->prepare("INSERT INTO $this->table 
-			(title, description, main, idUser , idCategory , urlName)
+			(title, description, main, idUser , idCategory , urlName,idStatus)
 			VALUES 
-			(:title, :description, :main, :idUser, :idCategory, :urlName)");
+			(:title, :description, :main, :idUser, :idCategory, :urlName,:idStatus)");
 
 			$consult->bindValue(':title', $this->getTitle(), PDO::PARAM_STR);
 			$consult->bindValue(':description', $this->getDescription(), PDO::PARAM_STR);
@@ -229,12 +228,14 @@ class ArticlesModel extends BaseModel
 			$consult->bindValue(':idUser', $this->getIdUser(), PDO::PARAM_INT);
 			$consult->bindValue(':idCategory', $this->getIdCategory(), PDO::PARAM_INT);
 			$consult->bindValue(':urlName', $this->getUrlName(), PDO::PARAM_STR);
+			$consult->bindValue(':idStatus', 1, PDO::PARAM_INT);
 
 			$consult->execute();
 
 			$result = ['lastId' => Database::connect()->lastInsertId()];
 
 			$this->success($result);
+			Sitemap::add($this->getUrlName(), date('Y-m-d'), 'daily');
 		} catch (PDOException $e) {
 
 			$this->fail($e->getMessage());
