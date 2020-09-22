@@ -1,7 +1,8 @@
 "use strict";
 
 class request {
-  post(route, formData) {
+  post(route,  formData ) {
+    formData._token='';
     const form = JSON.stringify(formData);
     console.log(form);
     return $.post("/api/" + route, { form: form }, json => {
@@ -10,7 +11,8 @@ class request {
   }
 
   get(route) {
-    return $.get("/api/" + route, json => {
+    const form = JSON.stringify({ _token: "" });
+    return $.post("/api/" + route, { form: form }, json => {
       return json;
     });
   }
