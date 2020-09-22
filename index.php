@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Blog montado en PHP con arquitectura MVC.
  * 
@@ -22,6 +23,9 @@ require_once 'libs/autoload.php';
 // Clases ayudantes
 require_once 'helpers/Utils.php';
 require_once 'helpers/View.php';
+require_once 'core/Database.php';
+
+require_once 'libs/sitemap.php';
 require_once 'libs/Auth.php';
 require_once 'libs/JsonRequest.php';
 
