@@ -19,16 +19,18 @@ class LoginController extends BaseController
 
         if ($this->submitForm() && $this->auth->compareTokens($token)) {
 
-            $this->model('users')->setEmail('email');
-            $this->model('users')->setPassword('password');
+            $users = $this->model('users');
 
-            $valid = !$this->model('users')->isValidForm();
-            var_dump(  $valid);
+            $users->setEmail('email');
+            $users->setPassword('password');
+
+            $valid = !$users->isValidForm();
+
             if ($valid) {
                 $this->setResponseModel($valid['message']);
             } else {
 
-                $login = $this->model('users')->login();
+                $login = $users->login();
 
                 if (!$login['success']) {
                     $this->setResponseModel($login['message']);
