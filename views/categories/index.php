@@ -45,7 +45,7 @@
 		<div class="modal-card bg-light">
 			<div class="modal-header">
 				<p class="text-bold">New category</p>
-				<button type="button" class="btn text-secondary text-bold btn-close-modal" title="Close modal">X</button>
+				<button type="button" class="btn text-secondary text-bold btn-close-modal btn-square" title="Close modal"><i class="fas fa-times"></i></button>
 			</div>
 			<div class="modal-body">
 				<form class="form" action="<?= URL_BASE ?>categories" method="post">
@@ -66,7 +66,7 @@
 		<div class="modal-card bg-light">
 			<div class="modal-header">
 				<p class="text-bold">Remove category</p>
-				<button type="button" class="btn text-secondary text-bold btn-close-modal" title="Close modal">X</button>
+				<button type="button" class="btn text-secondary text-bold btn-close-modal btn-square" title="Close modal"><i class="fas fa-times"></i></button>
 			</div>
 			<div class="modal-body">
 				<form class="form">
