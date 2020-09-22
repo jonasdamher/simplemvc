@@ -28,7 +28,7 @@ class CategoriesController extends BaseController
         }
 
         $categories = $this->model('categories')->getAll();
-
+        Footer::js(['dom', 'request', 'validator', 'categories']);
         include View::render('categories');
     }
 
@@ -73,10 +73,16 @@ class CategoriesController extends BaseController
     public function apiGet()
     {
         $id = $this->json->getRequest();
-        $this->model('categories')->setId($id);
+        $posts = $this->json->postRequest();
 
-        $getCategory = $this->model('categories')->get();
-        $this->json->jsonResponse($getCategory);
+        if($this->auth->compareTokens($posts['_token'])){
+            
+            $this->model('categories')->setId($id);
+
+            $getCategory = $this->model('categories')->get();
+            
+            $this->json->jsonResponse($getCategory);
+        }
     }
 
     public function apiDelete()
