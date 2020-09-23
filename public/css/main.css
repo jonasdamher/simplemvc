@@ -258,7 +258,6 @@ body {
 
 .logo {
   width: 42px;
-  height: 42px;
 }
 
 .f-column {
@@ -520,4 +519,8 @@ li.m-0 {
   color: rgb(58, 58, 58);
   pointer-events: none;
   cursor: default;
+}
+
+.mw-card{
+  max-width: 336px;
 }
