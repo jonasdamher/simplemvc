@@ -121,60 +121,6 @@ class ArticlesModel extends BaseModel
 		return $this->findSqlByName($sql, 'urlName', $this->getId());
 	}
 
-	public function pagination($currentPage, $limit)
-	{
-		$totalRow = $this->countAll();
-		$offset = (1 - $currentPage) * $limit;
-
-		$pages = ceil($totalRow / $limit);
-
-		$pagination = [
-			'pagination' => [
-				['page' => 0, 'active' => false,  'disabled' => false, 'rel' => ''],
-				['page' => 0, 'active' => false, 'disabled' => false, 'rel' => ''],
-				['page' => 0, 'active' => false, 'disabled' => false, 'rel' => ''],
-				['page' => 0, 'active' => false, 'disabled' => false, 'rel' => '']
-			],
-			'start' => $offset + 1,
-			'end' => min(($offset + $limit), $totalRow),
-			'pages' => $pages,
-			'current' => $currentPage
-		];
-
-		$copyPage = ($currentPage - 1);
-		$finalPage = false;
-
-		$countPagination = count($pagination['pagination']);
-
-		for ($key = 0; $key < $countPagination; $key++) {
-			// Añadir número de página
-			if ($currentPage > 1) {
-
-				$pagination['pagination'][$key]['page'] = $copyPage;
-				++$copyPage;
-				$pagination['pagination'][$key]['rel'] = $copyPage > $currentPage ? 'next' : 'prev';
-			} else if ($currentPage < $pages) {
-
-				$pagination['pagination'][$key]['page'] = ++$copyPage;
-				$pagination['pagination'][$key]['rel'] = 'next';
-			}
-
-			if ($finalPage) {
-				// unset($pagination['pagination'][$key]);
-				$pagination['pagination'][$key]['rel'] = '';
-				$pagination['pagination'][$key]['disabled'] = true;
-			} else if ($pagination['pagination'][$key]['page'] == $currentPage) {
-				// Marcar como activo
-				$pagination['pagination'][$key]['active'] = true;
-				$pagination['pagination'][$key]['rel'] = 'canonical';
-			}
-
-			$finalPage = ($pages <= $pagination['pagination'][$key]['page']);
-		}
-
-		return $pagination;
-	}
-
 	/**
 	 * Coger todos los artículos que existen
 	 */
@@ -197,7 +143,9 @@ class ArticlesModel extends BaseModel
 		$offset = (--$currentPage) * $limit;
 
 		$sql = "SELECT distinct main.id,
-		main.title, main.description, main.main, main.idUser, main.idCategory, main.urlName, main.createAt, main.updateAt,
+		main.title, main.description, main.main, main.idUser, 
+		main.idCategory, main.urlName, main.createAt, 
+		main.updateAt,
 		category.name as categoryName, user.name as user
 		FROM $this->table as main
 		inner join art_categories as category on main.idCategory=category.id
