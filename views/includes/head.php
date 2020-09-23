@@ -12,7 +12,7 @@
     <!-- META Open Graph -->
     <meta name="og:title" content="<?= Head::getTitle() ?>jonasdamher" />
     <meta name="og:description" content="<?= Head::getDescription() ?>" />
-    <meta name="og:image" content="<?= URL_BASE ?>public/images/logo/jonasdamher.png" />
+    <meta name="og:image" content="<?= URL_BASE ?>public/images/logo/launcher-3.webp" />
     <meta name="og:url" content="<?= URL_BASE . View::controller() . Head::getCaconical() ?>" />
     <meta name="og:site_name" content="jonasdamher" />
     <meta name="og:email" content="jonas.damher@gmail.com" />
@@ -20,7 +20,7 @@
     <!-- META Twitter Cards -->
     <meta name="twitter:title" content="<?= Head::getTitle() ?>jonasdamher" />
     <meta name="twitter:description" content="<?= Head::getDescription() ?>" />
-    <meta name="twitter:image" content="<?= URL_BASE ?>public/images/logo/jonasdamher.png" />
+    <meta name="twitter:image" content="<?= URL_BASE ?>public/images/logo/launcher-3.webp" />
     <meta name="twitter:site" content="@jonasdamher" />
     <meta name="twitter:creator" content="@jonasdamher" />
     <!-- META OTHERS -->
@@ -32,7 +32,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- ICONS -->
     <link rel="shortcut icon" type="image/ico" href="<?= URL_BASE ?>public/images/logo/favicon.ico" />
-    <link rel="apple-touch-icon" type="image/png" href="<?= URL_BASE ?>public/images/logo/launcher-3.png" />
+    <link rel="apple-touch-icon" type="image/png" href="<?= URL_BASE ?>public/images/logo/launcher-3.webp" />
     <!-- FONTS -->
     <link rel="preload" href="<?= URL_BASE ?>public/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin />
     <!-- MANIFEST -->
