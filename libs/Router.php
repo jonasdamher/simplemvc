@@ -43,8 +43,10 @@ $controller = new $className();
  * Comprueba que existe el método en el controlador y 
  * utiliza el método si es correcto.
  */
-if (!method_exists($controller, $action)) {
+if (!method_exists($controller, $action) && $className != 'articlesController') {
     Utils::redirection('error/404');
+} else if (!method_exists($controller, $action) && $className == 'articlesController') {
+    $action = 'get';
 }
 
 $controller->$action();
