@@ -1,6 +1,6 @@
 <section class="navbar-content">
 	<a href="<?= URL_BASE ?>home">
-		<img class="logo" src="<?= URL_BASE ?>public/images/logo/jonasdamher.png" title="logo" alt="logo" />
+		<img class="logo" src="<?= URL_BASE ?>public/images/logo/launcher-1.webp" title="logo" alt="logo" />
 	</a>
 	<ul class="navbar-menu">
 		<li class="<?= Utils::menuActive('home') ?>"><a href="<?= URL_BASE ?>home"><span><i class="fas fa-home"></i></span>Home</a></li>

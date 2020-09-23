@@ -1,6 +1,6 @@
 <section class="navbar-content">
 	<a href="<?= URL_BASE ?>users/profile">
-		<img class="logo" src="<?= URL_BASE ?>public/images/logo/jonasdamher.png" title="logo simplymvcphp" alt="logo simplymvcphp" />
+		<img class="logo" src="<?= URL_BASE ?>public/images/logo/launcher-1.webp" title="logo simplymvcphp" alt="logo simplymvcphp" />
 	</a>
 	<ul class="navbar-menu">
 		<li class="<?= Utils::menuActive('users') ?>"><a href="<?= URL_BASE ?>users/profile">Profile</a></li>
