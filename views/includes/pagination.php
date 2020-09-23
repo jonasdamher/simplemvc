@@ -6,7 +6,7 @@
 					<ul>
 						<?php foreach ($pagination['pagination'] as $page) { ?>
 							<li>
-								<a class="<?= $page['active'] ? 'active' : '' ?><?= $page['disabled'] ? ' disabled' : '' ?>" <?= $page['active'] ? 'aria-current="true"' : '' ?> aria-label="<?= $page['active'] ? 'Current Page, Page ' . $page['page'] : 'Go to page ' . $page['page'] ?>" title="<?= $page['active'] ? 'Current Page, page ' . $page['page'] : 'Go to page ' . $page['page'] ?>" <?= (!empty($page['rel']) ? 'rel="' . $page['rel'] . '"' : '') ?> href="<?= URL_BASE . 'articles?page=' . $page['page'] . '&limit=' . $limit ?>">
+								<a class="<?= $page['active'] ? 'active' : '' ?><?= $page['disabled'] ? ' disabled' : '' ?>" <?= $page['active'] ? 'aria-current="true"' : '' ?> aria-label="<?= $page['active'] ? 'Current page, Page ' . $page['page'] : 'Go to page ' . $page['page'] ?>" title="<?= $page['active'] ? 'Current page, page ' . $page['page'] : 'Go to page ' . $page['page'] ?>" <?= (!empty($page['rel']) ? 'rel="' . $page['rel'] . '"' : '') ?> href="<?= URL_BASE . 'articles?page=' . $page['page'] . '&limit=' . $limit ?>">
 									<?= $page['page'] ?>
 								</a>
 							</li>
