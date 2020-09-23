@@ -30,7 +30,7 @@ class ArticlesController extends BaseController
 
     public function get()
     {
-        $id = $_GET['id'] ?? null;
+        $id = $_GET['action'] ?? null;
 
         if (is_null($id)) {
             Utils::redirection('error/error404');
@@ -71,6 +71,8 @@ class ArticlesController extends BaseController
         if (!$articles['success']) {
             $this->setResponseModel($articles['message'] . 'articles.');
         }
+        $pagination = $this->model('articles')->pagination($currentPage,$limit);
+
         include View::render('articles', 'search');
     }
 
