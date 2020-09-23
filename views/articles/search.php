@@ -3,12 +3,8 @@
 	<div class="row j-center">
 		<h1 class="h1">Search</h1>
 	</div>
-	<section class="row j-center">
-		<div class="card card-form bg-light shadow-md">
-			<div class="card-body">
-				<p><?= $search ?></p>
-				<?php include 'views/articles/cardsArticles.php'; ?>
-			</div>
-		</div>
+	<section class="row">
+		<?php include 'views/articles/cardsArticles.php'; ?>
 	</section>
+	<?php include 'views/includes/pagination.php'; ?>
 </section>
