@@ -1,6 +1,6 @@
 <section class="navbar-content">
 	<a href="<?= URL_BASE ?>users/profile">
-		<img class="logo" src="<?= URL_BASE ?>public/images/logo/launcher-1.webp" title="logo simplymvcphp" alt="logo simplymvcphp" />
+		<img class="logo" src="<?= URL_BASE ?>public/images/logo/launcher-1.webp" title="logo" alt="logo" />
 	</a>
 	<ul class="navbar-menu">
 		<li class="<?= Utils::menuActive('users') ?>"><a href="<?= URL_BASE ?>users/profile">Profile</a></li>
@@ -22,7 +22,7 @@
 	</ul>
 </section>
 <section class="navbar-content">
-	<div class="text-shadow-sm"><?= $_SESSION['userName'] ?></div>
+	<div class="text-shadow-sm" title="<?= $_SESSION['userName'] ?>"><?= $_SESSION['userName'] ?></div>
 	<span class="text-secondary separator-left">|</span>
-	<a class="btn btn-square text-shadow-sm" href="<?= URL_BASE ?>users/logout?token=<?= $_SESSION['_token'] ?>">Logout</a>
+	<a class="btn btn-square text-shadow-sm" href="<?= URL_BASE ?>users/logout?token=<?= $_SESSION['_token'] ?>" title="Logout">Logout</a>
 </section>

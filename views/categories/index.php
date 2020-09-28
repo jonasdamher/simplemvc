@@ -43,7 +43,7 @@
 <div id="modal-new" class="modal">
 	<div class="modal-content">
 		<div class="modal-card bg-light">
-			<div class="modal-header">
+			<div class="modal-header border-bottom">
 				<p class="text-bold">New category</p>
 				<button type="button" class="btn text-secondary text-bold btn-close-modal btn-square" title="Close modal"><i class="fas fa-times"></i></button>
 			</div>

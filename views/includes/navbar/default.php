@@ -16,7 +16,7 @@
 						<i class="fas fa-search fa-lg"></i>
 					</button>
 				</label>
-				
+
 				<input type="search" id="search" name="q" class="input <?= (empty(Utils::getValue('q')) ? 'd-none' : '') ?>" placeholder="Search..." value="<?= (empty(Utils::getValue('q')) ? '' : Utils::getValue('q')) ?>" />
 
 				<button type="button" id="btn-quit-search" class="btn btn-secondary btn-square <?= (empty(Utils::getValue('q')) ? 'd-none' : '') ?>" title="Search quit">
