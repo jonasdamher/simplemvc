@@ -302,25 +302,25 @@ body {
 .modal .modal-content {
   height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .modal .modal-content .modal-card {
   min-width: 320px;
+  margin-top: 1rem;
   border: 1px solid rgba(34, 34, 34, 0.096);
+}
+
+.modal .modal-content .modal-card .modal-body,
+.modal .modal-content .modal-card .modal-header {
+  padding: 1rem;
 }
 
 .modal .modal-content .modal-card .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.modal .modal-content .modal-card .modal-body,
-.modal .modal-content .modal-card .modal-header {
-  padding: 1rem;
 }
 
 .table-responsive {
@@ -521,6 +521,6 @@ li.m-0 {
   cursor: default;
 }
 
-.mw-card{
+.mw-card {
   max-width: 336px;
 }
