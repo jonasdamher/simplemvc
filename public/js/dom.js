@@ -70,6 +70,8 @@ $(function () {
     let btn = $(this);
     checkDataSearch(e);
     if (btn.attr("type") == "button") {
+      $('.logo').addClass('d-none-md');
+      $('#btn-main-menu').addClass('d-none-md');
       e.preventDefault();
     }
 
@@ -82,6 +84,9 @@ $(function () {
   });
 
   $("#btn-quit-search").click(function () {
+    $('.logo').removeClass('d-none-md');
+    $('#btn-main-menu').removeClass('d-none-md');
+    
     let btnSearch = $("#btn-search");
     btnSearch.attr("data-toggle", "close");
     btnSearch.attr("type", "button");
@@ -95,4 +100,15 @@ $(function () {
   $(".btn-close-modal").on("click", function () {
     $(this).parents(".modal").hide();
   });
+
+  $('#btn-main-menu').on('click', function () {
+    $('#main-menu').toggleClass('open-menu');
+
+    if ($('#main-menu').hasClass('open-menu')) {
+      setTimeout(() => {
+        $('#main-menu').css('left', '0px');
+      }, 300);
+    }
+  });
+
 });
