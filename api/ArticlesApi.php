@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class ArticlesApi extends BaseController
+class ArticlesApi extends ApiController
 {
 	public function __construct()
 	{
