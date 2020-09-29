@@ -127,7 +127,12 @@ body {
 }
 
 .btn-square {
-  padding: 0.6rem;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-secondary {
@@ -257,7 +262,7 @@ body {
 }
 
 .logo {
-  width: 42px;
+display: inline-flex;
 }
 
 .f-column {
@@ -473,6 +478,7 @@ li.m-0 {
   animation-name: hide-search;
   padding-left: 0;
   padding-right: 0;
+  width: 0;
   border: 0;
 }
 
@@ -524,3 +530,74 @@ li.m-0 {
 .mw-card {
   max-width: 336px;
 }
+
+#btn-main-menu {
+  display: none;
+}
+
+.open-menu{
+  display: flex !important;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media (max-width: 768px) {
+
+.col-1-md {width: 8.33%;}
+.col-2-md {width: 16.66%;}
+.col-3-md {width: 25%;}
+.col-4-md {width: 33.33%;}
+.col-5-md {width: 41.66%;}
+.col-6-md {width: 50%;}
+.col-7-md {width: 58.33%;}
+.col-8-md {width: 66.66%;}
+.col-9-md {width: 75%;}
+.col-10-md {width: 83.33%;}
+.col-11-md {width: 91.66%;}
+.col-12-md {width: 100%;}
+
+  #btn-main-menu {
+    display: flex;
+  }
+
+  #main-menu {
+    transition: 0.3s;
+    display: none;
+    position: fixed;
+    z-index: 100;
+    background-color: #fff;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    width: 300px;
+    align-items: start;
+    left: -300px;
+    top: 0;
+    margin: 0;
+    height: 100%;
+  }
+
+  #main-menu li {
+    margin: 0.2rem 0rem;
+    padding: 0.7rem 0.5rem;
+  }
+
+  .navbar-body{
+    padding: 1rem;
+  }
+
+  button.d-none-md, a.d-none-md{
+    display: none !important;
+  }
+}
+
