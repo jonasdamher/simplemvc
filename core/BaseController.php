@@ -10,32 +10,13 @@ class BaseController
 {
 
 	private array $models = [];
-	private string $responseModel = '';
 
 	// Otros módulos.
 	protected ?Auth $auth = null;
-	protected ?JsonRequest $json = null;
-	
+
 	public function __construct()
 	{
 		$this->auth = new Auth;
-		$this->json = new JsonRequest;
-	}
-
-	/**
-	 * Para guardar la respuesta de un método de un modelo.
-	 */
-	protected function setResponseModel(string $res)
-	{
-		$this->responseModel = $res;
-	}
-
-	/**
-	 * Para mostrar respuesta guardada de un modelo.
-	 */
-	public function getResponseModel(): string
-	{
-		return $this->responseModel;
 	}
 
 	/**
@@ -60,13 +41,4 @@ class BaseController
 	{
 		return $this->models[$modelName];
 	}
-
-	/**
-	 * Comprueba que exista una petición de tipo POST
-	 */
-	protected function submitForm(): bool
-	{
-		return ($_SERVER['REQUEST_METHOD'] == 'POST');
-	}
-
 }
