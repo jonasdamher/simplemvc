@@ -26,8 +26,6 @@ if (!is_null($api) && $api == 'api') {
 
     // Autocargar todas las clases api
     require_once 'libs/ApiAutoload.php';
-
-    $action = 'api' . ucfirst($action);
     $path = 'api';
     $className = $controller . 'Api';
 } else {
