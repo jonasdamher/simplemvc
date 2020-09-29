@@ -1,6 +1,11 @@
 "use strict";
 
-class categories extends validator {}
+class categories extends validator {
+
+  #id = 0;
+  #name = '';
+  
+}
 
 $(function () {
   // OPEN MODAL - NEW
