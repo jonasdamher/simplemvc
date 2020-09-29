@@ -6,7 +6,6 @@
     <!-- META -->
     <meta name="description" content="<?= Head::getDescription() ?>" />
     <meta name="keywords" content="<?= Head::getKeyWords() ?>" />
-    <meta name="canonical" content="<?= URL_BASE . View::controller() . Head::getCaconical() ?>" />
     <meta name="robots" content="<?= Head::getRobots() ?>" />
     <meta name="googlebot" content="<?= Head::getRobots() ?>" />
     <!-- META Open Graph -->
@@ -30,6 +29,8 @@
     <meta name="apple-mobile-web-app-title" content="<?= Head::getTitle() ?>jonasdamher" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- OTHERS LINKS -->
+    <link rel="canonical" href="<?= URL_BASE . View::controller() . Head::getCaconical() ?>" />
     <!-- ICONS -->
     <link rel="shortcut icon" type="image/ico" href="<?= URL_BASE ?>public/images/logo/favicon.ico" />
     <link rel="apple-touch-icon" type="image/png" href="<?= URL_BASE ?>public/images/logo/launcher-3.webp" />
