@@ -72,16 +72,14 @@ class Article extends validator {
 
   create() {
     const validate = this.#validateCreate();
-    console.log(validate);
 
     if (!validate.isValid) {
       return;
     }
 
-    this.post("articles/create", this.#getData()).done(function (json) {
+    this.post("articles/create", 
+    this.#getData()).then((json) => {
       console.log(json);
-      const data = JSON.parse(json);
-      console.log(data);
     });
   }
 }
