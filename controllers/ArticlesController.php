@@ -23,7 +23,7 @@ class ArticlesController extends BaseController
             $this->setResponseModel($articles['message'] . 'articles.');
         }
 
-        $pagination = $this->model('articles')->pagination($currentPage,$limit);
+        $pagination = $this->model('articles')->pagination($currentPage, $limit);
 
         include View::render('articles');
     }
@@ -51,6 +51,7 @@ class ArticlesController extends BaseController
         // Vista
 
         Head::title($article['title']);
+        Head::caconical('/'.$id);
         Head::description($article['description']);
 
         if ($tags['success']) {
@@ -66,20 +67,19 @@ class ArticlesController extends BaseController
         $limit = $_GET['limit'] ?? 3;
 
         $search = trim($_GET['q']) ?? null;
-        $articles = $this->model('articles')->getAllInSearch($search,$currentPage, $limit);
+        $articles = $this->model('articles')->getAllInSearch($search, $currentPage, $limit);
 
         if (!$articles['success']) {
             $this->setResponseModel($articles['message'] . 'articles.');
         }
-        $pagination = $this->model('articles')->pagination($currentPage,$limit);
-
+        $pagination = $this->model('articles')->pagination($currentPage, $limit);
         include View::render('articles', 'search');
     }
 
     public function create()
     {
         $token = $this->auth->_token();
-        
+
         $this->auth->role('ROLE_ADMIN');
 
         $categories = $this->model('categories')->getAll();
@@ -89,40 +89,5 @@ class ArticlesController extends BaseController
         Footer::js(['request', 'validator', 'ckeditor/ckeditor', 'articles']);
 
         include View::render('articles', 'create');
-    }
-
-    /**
-     * API
-     */
-
-    public function apiCreate()
-    {
-        $this->auth->role('ROLE_ADMIN');
-
-        $posts = $this->json->postRequest();
-
-        // Pasarle al modelo de artículo los datos recogidos por POST
-        $this->model('articles')->setTitle($posts['title']);
-        $this->model('articles')->setDescription($posts['description']);
-        $this->model('articles')->setMain($posts['main']);
-        $this->model('articles')->setIdUser($_SESSION['userId']);
-        $this->model('articles')->setIdCategory($posts['category']);
-        $this->model('articles')->setUrlName($posts['title']);
-
-        $create = $this->model('articles')->create();
-
-        if ($create['success'] && count($posts['tags']) > 0) {
-
-            // Añadir etiquetas si es que las tiene.
-
-            foreach ($posts['tags'] as $tag) {
-                $this->model('tags')->setIdArticle($create['result']['lastId']);
-                $this->model('tags')->setName($tag);
-
-                $this->model('tags')->create();
-            }
-        }
-
-        $this->json->jsonResponse($create);
     }
 }
