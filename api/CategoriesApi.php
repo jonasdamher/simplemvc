@@ -12,7 +12,7 @@ class CategoriesApi extends ApiController
 		$this->modelLoading(['categories']);
 	}
 
-	public function apiUpdate()
+	public function update()
 	{
 		// Coger todos los datos JSON en petición POST enviado por JS 
 		$posts = $this->json->postRequest();
@@ -28,7 +28,7 @@ class CategoriesApi extends ApiController
 		$this->json->jsonResponse($update);
 	}
 
-	public function apiNew()
+	public function create()
 	{
 		// Coger todos los datos JSON en petición POST enviado por JS 
 		$posts = $this->json->postRequest();
@@ -46,7 +46,7 @@ class CategoriesApi extends ApiController
 		$this->json->jsonResponse($create);
 	}
 
-	public function apiGet()
+	public function get()
 	{
 		$id = $this->json->getRequest();
 		$posts = $this->json->postRequest();
@@ -61,7 +61,7 @@ class CategoriesApi extends ApiController
 		}
 	}
 
-	public function apiDelete()
+	public function delete()
 	{
 		$this->model('categories')->setId($this->json->getRequest());
 

@@ -11,7 +11,7 @@ class ArticlesApi extends ApiController
 		$this->modelLoading(['articles', 'tags', 'categories']);
 	}
 
-	public function apiCreate()
+	public function create()
 	{
 		$this->auth->role('ROLE_ADMIN');
 
