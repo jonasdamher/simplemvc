@@ -40,6 +40,28 @@ class JsonRequest
 		}
 	}
 
+	public function rawRequest(): object
+	{
+		try {
+
+			$jsonText = trim(file_get_contents('php://input'));
+
+			if (empty($jsonText)) {
+				throw new Exception("Don't exist parameter 'form' in post request.");
+			}
+
+			$json = json_decode($jsonText);
+
+			if (json_last_error() != JSON_ERROR_NONE) {
+				throw new Exception(json_last_error());
+			}
+
+			return $json;
+		} catch (Exception $e) {
+			$this->jsonResponse(['success' => false, 'message' => $e->getMessage()]);
+		}
+	}
+
 	/**
 	 * Coge todos los parámetros GET 
 	 * que han sido enviados mediante un json.
