@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class ArticlesController extends BaseController
+class ArticlesController extends Controller
 {
 
     public function __construct()

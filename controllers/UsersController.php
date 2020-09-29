@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class UsersController extends BaseController
+class UsersController extends Controller
 {
 
     public function __construct()
