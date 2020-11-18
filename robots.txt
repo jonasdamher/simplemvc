@@ -1,0 +1,10 @@
+User-agent: *
+
+Allow: /home/
+Allow: /articles/
+Allow: /categories/
+
+Disallow: /users/
+Disallow: /error/
+Disallow: /login/
+Sitemap: https://jonasdamher.dev/sitemap.xml

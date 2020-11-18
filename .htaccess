@@ -1,0 +1,84 @@
+
+# No mostrar listado de carpetas
+IndexIgnore *
+
+Options +FollowSymLinks
+Options -Indexes
+
+# Para que no salga la versión actual de Apache
+ServerSignature Off
+
+# Denegar el acceso al archivo .htaccess
+<Files .htaccess>
+  Order allow,deny
+  Deny from all
+</Files>
+
+# Denegar el acceso a cualquier archivo con dichas extensiones
+<Files ~ "\.(env|md|gitignore|gitattributes|lock)$">
+  Order allow,deny
+  Deny from all
+</Files>
+
+# Rutas de la página web
+
+<IfModule mod_rewrite.c>
+
+  RewriteEngine On
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Redireccionar de HTTP a HTTPS
+  RewriteCond %{SERVER_PORT} 80
+  RewriteRule ^(.*)$ https:/www.jonasdamher.dev/$1 [R,L]
+
+  # Errores HTTP
+
+  ErrorDocument 401 index.php?controller=error&action=401
+  ErrorDocument 403 index.php?controller=error&action=403
+  ErrorDocument 404 index.php?controller=error&action=404
+  ErrorDocument 500 index.php?controller=error&action=500
+
+  # Urls amigables API
+
+  RewriteRule ^api/([a-zA-Z0-9]+)/([a-zA-Z0-9-]+)/([a-zA-Z0-9-]+)$ index.php?api=api&controller=$1&action=$2&id=$3 [L]
+  RewriteRule ^api/([a-zA-Z0-9]+)/([a-zA-Z0-9-]+)$ index.php?api=api&controller=$1&action=$2 [L]
+
+  # Urls amigables
+
+  RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9-]+)/([a-zA-Z0-9-]+)$ index.php?controller=$1&action=$2&id=$3 [L]
+  RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9-]+)$ index.php?controller=$1&action=$2 [L,QSA]
+  RewriteRule ^([a-zA-Z0-9]+)$ index.php?controller=$1 [L,QSA]
+ 
+</IfModule>
+
+# Caché
+
+<IfModule mod_expires.c>
+  
+  ExpiresActive On
+
+  # Guardar archivos en caché durante 1 año
+  
+  ExpiresByType font/ttf A31536000 
+  ExpiresByType font/woff A31536000 
+  ExpiresByType font/eot A31536000 
+  ExpiresByType font/woff2 A31536000 
+  ExpiresByType image/svg+xml A31536000 
+  ExpiresByType image/webp A31536000 
+  ExpiresByType image/png A31536000 
+  ExpiresByType text/css A31536000 
+  ExpiresByType text/javascript A31536000 
+  ExpiresByType application/javascript A31536000 
+  ExpiresByType application/x-javascript A31536000 
+
+</IfModule>
+
+# Compresión de archivos
+
+<IfModule mod_brotli.c>
+  
+  SetOutputFilter BROTLI_COMPRESS
+
+</IfModule>
